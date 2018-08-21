@@ -8,7 +8,7 @@
 %standalone
 
 COMENTARIO = "//".*
-IDENTIFICADOR = _.* | [a-z].* | [A_Z].*
+IDENTIFICADOR = _.* | [a-z].* | [A-Z].*
 ENTEROS = 0 | [1-9][0-9]*
 
 %%
