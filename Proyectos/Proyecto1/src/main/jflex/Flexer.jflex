@@ -15,7 +15,9 @@ RESERVADA     = "and"|"not"|"while"|"elif"|"or"|"else"|"if"|"print"
 <<<<<<< HEAD
 OPERADOR = "+" | "-" | "*" |  "/" | "%" | "<" | ">" | ">=" | "<=" | "=" | "!" 
 =======
+CADENAINVALIDA = (\".*)(\.*|\".*)(\")
 CADENA        = (\".*)(\")
+
 >>>>>>> 843871e6914313a2ca6af9aa7193520af2958518
 
 %%
@@ -31,6 +33,7 @@ CADENA        = (\".*)(\")
   {OPERADOR}		{ System.out.printf("OPERADOR(%s)",yytext()); }
   "\n"				{ System.out.printf(yystate());}
 =======
+  {CADENAINVALIDA}  { throw new Error("\n" + "Caracter ilegal en cadena "+yytext()+" " + "linea "+yyline+" "); }   
   {CADENA}          { System.out.printf("CADENA(%s)", yytext()); }
 >>>>>>> 843871e6914313a2ca6af9aa7193520af2958518
 }
