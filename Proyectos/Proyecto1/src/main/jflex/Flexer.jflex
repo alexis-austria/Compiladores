@@ -15,7 +15,7 @@ RESERVADA     = "and"|"del"|"from"|"not"|"while"|"as"|"elif"|"global"|"or"|"with
 
 %%
 <YYINITIAL> {
-  {ESPACIO}         {/*IGNORE*/}
+  {ESPACIO}         {/*IGNORAR*/}
   "True"            { System.out.printf("BOOLEANO(%s)", yytext()); }
   "False"           { System.out.printf("BOOLEANO(%s)", yytext()); }
   {ENTERO}          { System.out.printf("ENTERO(%s)", yytext()); }
