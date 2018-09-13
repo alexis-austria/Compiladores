@@ -11,7 +11,7 @@ IDENTIFICADOR = ("_"|[a-z]|[A-Z])("_"|[a-z]|[A-Z]|{ENTERO})*
 ESPACIO       = " "
 ENTERO = 0 | [1-9][0-9]*
 REAL = "."[0-9]+ | {ENTERO}"."[0-9]+ | {ENTERO}"."
-RESERVADA     = "and"|"del"|"from"|"not"|"while"|"as"|"elif"|"global"|"or"|"with"|"assert"|"else"|"if"|"pass"|"yield"|"break"|"except"|"import"|"print"|"class"|"exec"|"in"|"raise"|"continue"|"finally"|"is"|"return"|"def"|"for"|"lambda"|"try"
+RESERVADA     = "and"|"not"|"while"|"elif"|"or"|"else"|"if"|"print"
 <<<<<<< HEAD
 OPERADOR = "+" | "-" | "*" |  "/" | "%" | "<" | ">" | ">=" | "<=" | "=" | "!" 
 =======
