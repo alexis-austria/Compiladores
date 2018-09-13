@@ -519,7 +519,7 @@ public class Flexer {
           }
         case 4: break;
         case 2: 
-          { System.out.printf("ENTERO(%s)", yytext());
+          { System.out.printf("ENTERO(%d)", yytext());
           }
         case 5: break;
         case 1: 

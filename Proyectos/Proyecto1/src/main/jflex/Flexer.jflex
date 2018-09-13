@@ -7,7 +7,11 @@ package lexico;
 %unicode
 %standalone
 
-BOOLEANO = True | False
+ENTERO = 0 | [1-9][0-9]*
 
 %%
-{BOOLEANO}  {System.out.println("BOOLEANO(yytext())");}
+<YYINITIAL> {
+  "True"      { System.out.printf("BOOLEANO(%s)", yytext()); }
+  "False"     { System.out.printf("BOOLEANO(%s)", yytext()); }
+  {ENTERO}    { System.out.printf("ENTERO(%s)", yytext()); }
+}
