@@ -7,7 +7,7 @@ package lexico;
 %unicode
 %standalone
 
-IDENTIFICADOR = ("_"|[a-z]|[A-Z])("_"|[a-z]|[A-Z]|{ENTERO})*
+IDENTIFICADOR = ("_"|[a-z]|[A-Z])([a-z]|[A-Z]|{ENTERO})*
 ESPACIO       = " "
 ENTERO = 0 | [1-9][0-9]*
 REAL = "."[0-9]+ | {ENTERO}"."[0-9]+ | {ENTERO}"."
