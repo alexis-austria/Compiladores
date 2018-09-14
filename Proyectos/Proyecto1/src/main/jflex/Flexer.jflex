@@ -1,5 +1,5 @@
 package lexico;
-
+import java.util.*;
 %%
 
 %public
@@ -26,7 +26,7 @@ CADENA        = (\".*)(\")
   {IDENTIFICADOR}   { System.out.printf("IDENTIFICADOR(%s)", yytext()); }
   {REAL}			{ System.out.printf("REAL(%s)",yytext()); }
   {OPERADOR}		{ System.out.printf("OPERADOR(%s)",yytext()); }
-  "\n"				{ System.out.printf(yystate());}
+  "\n"				{ System.out.println("SALTO");}
   {CADENAINVALIDA}  { throw new Error("\n" + "Caracter ilegal en cadena "+yytext()+" " + "linea "+yyline+" "); }   
   {CADENA}          { System.out.printf("CADENA(%s)", yytext()); }
 }
