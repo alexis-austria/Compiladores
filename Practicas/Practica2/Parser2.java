@@ -167,35 +167,38 @@ final static short yylhs[] = {                           -1,
     5,    5,    3,    6,    6,
 };
 final static short yylen[] = {                            2,
-    0,    1,    1,    1,    2,    1,    3,    0,    2,    1,
+    0,    1,    1,    1,    2,    3,    2,    0,    2,    3,
     3,    0,    2,    1,    0,
 };
 final static short yydefred[] = {                         0,
-   14,    0,    2,    0,    0,    0,    6,    0,    5,   10,
-    0,    9,   13,    0,    0,    0,    0,    7,   11,
+   14,    0,    2,    0,    0,    0,    0,    0,    5,    0,
+    0,    9,   13,    0,    0,    0,    7,    0,    0,    6,
+   10,   11,
 };
 final static short yydgoto[] = {                          2,
-    3,    4,   16,    9,   12,    6,
+    3,   15,   16,    9,   12,    6,
 };
-final static short yysindex[] = {                      -249,
-    0,    0,    0, -253, -252, -251,    0, -249,    0,    0,
- -249,    0,    0, -253, -253, -252, -252,    0,    0,
+final static short yysindex[] = {                      -258,
+    0,    0,    0, -253, -252, -246, -258, -258,    0, -258,
+ -258,    0,    0, -253, -253, -252,    0, -252, -252,    0,
+    0,    0,
 };
 final static short yyrindex[] = {                         1,
-    0,    0,    0,   11,    2,    0,    0, -248,    0,    0,
- -248,    0,    0,   12,   12,    6,    6,    0,    0,
+    0,    0,    0,   16,    2,    0, -244, -244,    0, -244,
+ -244,    0,    0,   18,   18,    6,    0,    6,    6,    0,
+    0,    0,
 };
 final static short yygindex[] = {                         0,
-    7,   -8,   14,    3,   -1,    0,
+    4,    3,   19,    7,   -9,    0,
 };
 final static int YYTABLESIZE=264;
 static short yytable[];
 static { yytable();}
 static void yytable(){
-yytable = new short[]{                         15,
-    1,    4,   17,    7,    8,   12,   10,   11,    1,   13,
-    3,    8,   15,    5,   14,   19,   18,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+yytable = new short[]{                          1,
+    1,    4,    4,    7,    8,   12,   10,   11,   21,   22,
+   14,   17,   18,   19,   13,    3,   15,    8,    5,    0,
+   20,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
@@ -225,10 +228,10 @@ yytable = new short[]{                         15,
 static short yycheck[];
 static { yycheck(); }
 static void yycheck() {
-yycheck = new short[] {                          8,
-    0,    0,   11,  257,  258,    0,  259,  260,  258,  261,
-    0,    0,  261,    0,    8,   17,   14,   -1,   -1,   -1,
-   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
+yycheck = new short[] {                        258,
+    0,    0,    0,  257,  258,    0,  259,  260,   18,   19,
+    7,    8,   10,   11,  261,    0,  261,    0,    0,   -1,
+   14,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
@@ -283,11 +286,11 @@ final static String yyrule[] = {
 "start : term",
 "start : factor",
 "expr : term X",
-"X : PLUS",
-"X : MINUS expr X",
+"X : PLUS expr X",
+"X : MINUS expr",
 "X :",
 "term : factor Y",
-"Y : TIMES",
+"Y : TIMES term Y",
 "Y : DIVIDE term Y",
 "Y :",
 "factor : Z NUMBER",
@@ -326,7 +329,7 @@ public void yyerror (String error) {
         System.err.println("El archivo " + args[0] + " no existe");
     }
  }
-//#line 258 "Parser2.java"
+//#line 261 "Parser2.java"
 //###############################################################
 // method: yylexdebug : check lexer state
 //###############################################################
@@ -496,7 +499,7 @@ case 4:
 //#line 12 "gram2.y"
 {System.out.println("[OK]");}
 break;
-//#line 423 "Parser2.java"
+//#line 426 "Parser2.java"
 //########## END OF USER-SUPPLIED ACTIONS ##########
     }//switch
     //#### Now let's reduce... ####
