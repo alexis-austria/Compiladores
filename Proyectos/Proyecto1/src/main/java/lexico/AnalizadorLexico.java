@@ -5,7 +5,7 @@ public class AnalizadorLexico {
     Flexer lexer;
 
     public AnalizadorLexico(String archivo){
-        String file = "fzz_error_cadena";
+        String file = "fizzbuzz";
         try {
             PrintStream out = new PrintStream(new FileOutputStream("out/" + file + ".plx"));
             System.setOut(out);

@@ -1,12 +1,6 @@
-if 9 > 7:
-#assssss
-  v_x = -4
-  while v_x < 1:
-    v_x += 1
-    print v_x * 3
-else:
-
-
-
-
-   v_x = "Hello world"
+# ejemplo.p
+if 0 < 1:
+    x = 2 + 9
+    print x
+ else:
+   x = 8
