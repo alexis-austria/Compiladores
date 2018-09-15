@@ -4,7 +4,6 @@ while (counter < 31):
         print "fizz"
     if counter % 5 == 0:
         print "buzz"
-        print "ola"
     if counter % 5 != 0 and counter % 3 != 0:
         print counter
     counter+= 1

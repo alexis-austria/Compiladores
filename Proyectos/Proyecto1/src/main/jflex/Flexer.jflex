@@ -6,6 +6,7 @@ import java.util.*;
 %class Flexer
 %unicode
 %standalone
+%line
 
 %{
 	Stack<Integer> indentaciones = new Stack<Integer>();
@@ -46,7 +47,7 @@ ESPACIO       = " "
 ENTERO = 0 | [1-9][0-9]*
 REAL = "."[0-9]+ | {ENTERO}"."[0-9]+ | {ENTERO}"."
 RESERVADA     = "and"|"not"|"while"|"elif"|"or"|"else"|"if"|"print"
-OPERADOR = "+" | "-" | "*" |  "/" | "%" | "<" | ">" | ">=" | "<=" | "=" | "!"| "+="
+OPERADOR = "+" | "-" | "*" |  "/" | "%" | "<" | ">" | ">=" | "<=" | "=" | "!"| "+=" | "==" | "-=" | "(" | ")"
 CADENAINVALIDA = (\".*)+ (\".*|\\.*) + (\")
 CADENA        = (\".*)(\")
 
@@ -65,8 +66,9 @@ CADENA        = (\".*)(\")
   {REAL}			{ System.out.printf("REAL(%s)",yytext()); }
   {OPERADOR}		{ System.out.printf("OPERADOR(%s)",yytext()); }
   "\n"				{ System.out.println("SALTO\n"); yybegin(INDENTACION);}
-  {CADENAINVALIDA}      { System.out.println("\n" + "Error:Cadena mal formada" + " en linea " + (yyline+1)); System.exit(1);}
+  {CADENAINVALIDA}  { System.out.println("\n" + "Error:Cadena mal formada" + " en linea " + (yyline+1)); System.exit(1);}
   {CADENA}          { System.out.printf("CADENA(%s)", yytext()); }
+  [^] 				{ System.out.println("\n" + "Error:Lexema no reconocido" + " en linea " + (yyline+1)); System.exit(1); }
 }
 
 <INDENTACION> {
@@ -84,4 +86,5 @@ CADENA        = (\".*)(\")
   	"\n"				{ yybegin(YYINITIAL); }
 	{CADENAINVALIDA}    { analiza("CADENAINVALIDA"); }
   	{CADENA}          	{ analiza("CADENA"); }
+	[^] 				{ System.out.println("\n" + "Error:Lexema no reconocido" + " en linea " + (yyline+1)); System.exit(1); }
 }

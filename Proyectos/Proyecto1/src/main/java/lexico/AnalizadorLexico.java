@@ -5,10 +5,11 @@ public class AnalizadorLexico {
     Flexer lexer;
 
     public AnalizadorLexico(String archivo){
+        String file = "fzz_error_cadena";
         try {
-            PrintStream out = new PrintStream(new FileOutputStream("output.txt"));
+            PrintStream out = new PrintStream(new FileOutputStream("out/" + file + ".plx"));
             System.setOut(out);
-            Reader lector = new FileReader("src/main/resources/test.txt");
+            Reader lector = new FileReader("src/main/resources/" + file + ".p");
             lexer = new Flexer(lector);
         }
         catch(FileNotFoundException ex) {
