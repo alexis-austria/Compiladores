@@ -47,7 +47,7 @@ ENTERO = 0 | [1-9][0-9]*
 REAL = "."[0-9]+ | {ENTERO}"."[0-9]+ | {ENTERO}"."
 RESERVADA     = "and"|"not"|"while"|"elif"|"or"|"else"|"if"|"print"
 OPERADOR = "+" | "-" | "*" |  "/" | "%" | "<" | ">" | ">=" | "<=" | "=" | "!"| "+="
-CADENAINVALIDA = (\".*)+ (\".|\\.) + (\")
+CADENAINVALIDA = (\".*)+ (\".*|\\.*) + (\")
 CADENA        = (\".*)(\")
 
 %state INDENTACION
