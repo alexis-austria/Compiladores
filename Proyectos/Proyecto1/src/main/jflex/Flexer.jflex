@@ -70,11 +70,7 @@ CADENA        = (\".*)(\")
 }
 
 <INDENTACION> {
-<<<<<<< HEAD
 	\# ~"\n" 			{ /*IGNORAR*/ }
-=======
-        
->>>>>>> fe22b7499262592ee57429b45f1e053c0bdf3bd2
 	{ESPACIO}			{ espacios++; }
 	"\t"				{ espacios+=4; }
 	"True"              { analiza("BOOLEANO"); }
@@ -85,12 +81,7 @@ CADENA        = (\".*)(\")
   	{IDENTIFICADOR} 	{ analiza("IDENTIFICADOR"); }
   	{REAL}				{ analiza("REAL"); }
   	{OPERADOR}			{ analiza("OPERADOR"); }
-<<<<<<< HEAD
   	"\n"				{ yybegin(YYINITIAL); }
+	{CADENAINVALIDA}    { analiza("CADENAINVALIDA"); }
   	{CADENA}          	{ analiza("CADENA"); }
-=======
-  	"\n"				{ analiza("SALTO");}
-  	{CADENA}          	{ analiza("CADENA"); }	
-		
->>>>>>> fe22b7499262592ee57429b45f1e053c0bdf3bd2
 }
