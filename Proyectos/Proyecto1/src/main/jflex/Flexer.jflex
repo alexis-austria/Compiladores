@@ -29,7 +29,8 @@ import java.util.*;
 				}
 				System.out.printf("%s(%s)",lexema,yytext());
 			}else if(espacios < indentaciones.peek()){
-				System.out.printf("%s(%s)\n",lexema,yytext());		System.out.printf("DEINDENTA(%d)",indentaciones.pop());
+				System.out.printf("DEINDENTA(%d)",espacios);
+                        	indentaciones.pop();
 			}else if(espacios == indentaciones.peek()){
 				System.out.printf("%s(%s)",lexema,yytext());
 			}else{
