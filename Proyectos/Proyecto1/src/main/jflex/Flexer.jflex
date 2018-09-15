@@ -47,6 +47,7 @@ ENTERO = 0 | [1-9][0-9]*
 REAL = "."[0-9]+ | {ENTERO}"."[0-9]+ | {ENTERO}"."
 RESERVADA     = "and"|"not"|"while"|"elif"|"or"|"else"|"if"|"print"
 OPERADOR = "+" | "-" | "*" |  "/" | "%" | "<" | ">" | ">=" | "<=" | "=" | "!"| "+="
+CADENAINVALIDA = (\".*)+ (\".|\\.) + (\")
 CADENA        = (\".*)(\")
 
 %state INDENTACION
@@ -64,11 +65,16 @@ CADENA        = (\".*)(\")
   {REAL}			{ System.out.printf("REAL(%s)",yytext()); }
   {OPERADOR}		{ System.out.printf("OPERADOR(%s)",yytext()); }
   "\n"				{ System.out.println("SALTO\n"); yybegin(INDENTACION);}
+  {CADENAINVALIDA}      { System.out.println("\n" + "Error:Cadena mal formada" + " en linea " + (yyline+1)); System.exit(1);}
   {CADENA}          { System.out.printf("CADENA(%s)", yytext()); }
 }
 
 <INDENTACION> {
+<<<<<<< HEAD
 	\# ~"\n" 			{ /*IGNORAR*/ }
+=======
+        
+>>>>>>> fe22b7499262592ee57429b45f1e053c0bdf3bd2
 	{ESPACIO}			{ espacios++; }
 	"\t"				{ espacios+=4; }
 	"True"              { analiza("BOOLEANO"); }
@@ -79,6 +85,12 @@ CADENA        = (\".*)(\")
   	{IDENTIFICADOR} 	{ analiza("IDENTIFICADOR"); }
   	{REAL}				{ analiza("REAL"); }
   	{OPERADOR}			{ analiza("OPERADOR"); }
+<<<<<<< HEAD
   	"\n"				{ yybegin(YYINITIAL); }
   	{CADENA}          	{ analiza("CADENA"); }
+=======
+  	"\n"				{ analiza("SALTO");}
+  	{CADENA}          	{ analiza("CADENA"); }	
+		
+>>>>>>> fe22b7499262592ee57429b45f1e053c0bdf3bd2
 }
