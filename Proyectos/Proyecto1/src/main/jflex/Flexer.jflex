@@ -10,6 +10,35 @@ import java.util.*;
 %{
 	Stack<Integer> indentaciones = new Stack<Integer>();
 	int espacios = 0;	
+
+	public void analiza(String lexema){
+		if(indentaciones.empty()){
+			if(espacios == 0)
+				System.out.printf("%s(%s)",lexema,yytext());						
+			else{
+				System.out.printf("INDENTA(%d)",espacios);
+				System.out.printf("%s(%s)",lexema,yytext());
+				indentaciones.push(espacios);
+			} 	
+		}else{
+			if(espacios == 0){
+				while(!indentaciones.empty()){
+					System.out.printf("DEINDENTA(%d)\n",indentaciones.pop());
+				}
+				System.out.printf("%s(%s)",lexema,yytext());				
+			}else if(espacios < indentaciones.peek()){
+				System.out.printf("%s(%s)\n",lexema,yytext());		System.out.printf("DEINDENTA(%d)",indentaciones.pop());
+			}else if(espacios == indentaciones.peek()){
+				System.out.printf("%s(%s)",lexema,yytext());								
+			}else{
+				System.out.printf("INDENTA(%d)",espacios);
+				System.out.printf("%s(%s)",lexema,yytext());
+				indentaciones.push(espacios);
+			}
+		}
+		espacios = 0;
+		yybegin(YYINITIAL);
+}
 %}
 
 IDENTIFICADOR = ("_"|[a-z]|[A-Z])("_"|[a-z]|[A-Z]|{ENTERO})*
@@ -40,20 +69,16 @@ CADENA        = (\".*)(\")
 <INDENTACION> {
 	{ESPACIO}			{ espacios++; }
 	"\t"				{ espacios+=4; }
-	{IDENTIFICADOR}		{ 
-							System.out.printf("INDENTA(%d)", espacios);
-							System.out.printf("IDENTIFICADOR(%s)", yytext());
-							espacios=0;
-							yybegin(YYINITIAL);
-						}
-	{RESERVADA}       	{ 
-							if(espacios == 0) 
-								System.out.printf("RESERVADA(%s)", yytext());
-							else
-								System.out.printf("INDENTA(%d)", espacios);
-							espacios=0;
-							yybegin(YYINITIAL);
-						}
+	"True"              { analiza("BOOLEANO"); }
+  	"False"  	        { analiza("BOOLEANO"); }
+  	":"         	    { analiza("SEPARADOR"); }
+  	{ENTERO}        	{ analiza("ENTERO"); }
+  	{RESERVADA} 	    { analiza("RESERVADA"); }
+  	{IDENTIFICADOR} 	{ analiza("IDENTIFICADOR"); }
+  	{REAL}				{ analiza("REAL"); }
+  	{OPERADOR}			{ analiza("OPERADOR"); }
+  	"\n"				{ analiza("SALTO");}
+  	{CADENA}          	{ analiza("CADENA"); }			
 }
 
 
