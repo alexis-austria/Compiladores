@@ -30,6 +30,7 @@ import java.util.*;
 				System.out.printf("%s(%s)",lexema,yytext());
 			}else if(espacios < indentaciones.peek()){
 				System.out.printf("DEINDENTA(%d)",espacios);
+                        	System.out.printf("%s(%s)",lexema,yytext());	
                         	indentaciones.pop();
 			}else if(espacios == indentaciones.peek()){
 				System.out.printf("%s(%s)",lexema,yytext());
