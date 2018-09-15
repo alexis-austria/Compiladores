@@ -9,27 +9,27 @@ import java.util.*;
 
 %{
 	Stack<Integer> indentaciones = new Stack<Integer>();
-	int espacios = 0;	
+	int espacios = 0;
 
 	public void analiza(String lexema){
 		if(indentaciones.empty()){
 			if(espacios == 0)
-				System.out.printf("%s(%s)",lexema,yytext());						
+				System.out.printf("%s(%s)",lexema,yytext());
 			else{
 				System.out.printf("INDENTA(%d)",espacios);
 				System.out.printf("%s(%s)",lexema,yytext());
 				indentaciones.push(espacios);
-			} 	
+			}
 		}else{
 			if(espacios == 0){
 				while(!indentaciones.empty()){
 					System.out.printf("DEINDENTA(%d)\n",indentaciones.pop());
 				}
-				System.out.printf("%s(%s)",lexema,yytext());				
+				System.out.printf("%s(%s)",lexema,yytext());
 			}else if(espacios < indentaciones.peek()){
 				System.out.printf("%s(%s)\n",lexema,yytext());		System.out.printf("DEINDENTA(%d)",indentaciones.pop());
 			}else if(espacios == indentaciones.peek()){
-				System.out.printf("%s(%s)",lexema,yytext());								
+				System.out.printf("%s(%s)",lexema,yytext());
 			}else{
 				System.out.printf("INDENTA(%d)",espacios);
 				System.out.printf("%s(%s)",lexema,yytext());
@@ -53,6 +53,7 @@ CADENA        = (\".*)(\")
 
 %%
 <YYINITIAL> {
+  \# ~"\n" 			{/*IGNORAR*/}
   {ESPACIO}         {/*IGNORAR*/}
   "True"            { System.out.printf("BOOLEANO(%s)", yytext()); }
   "False"           { System.out.printf("BOOLEANO(%s)", yytext()); }
@@ -67,6 +68,7 @@ CADENA        = (\".*)(\")
 }
 
 <INDENTACION> {
+	\# ~"\n" 			{ /*IGNORAR*/ }
 	{ESPACIO}			{ espacios++; }
 	"\t"				{ espacios+=4; }
 	"True"              { analiza("BOOLEANO"); }
@@ -77,9 +79,6 @@ CADENA        = (\".*)(\")
   	{IDENTIFICADOR} 	{ analiza("IDENTIFICADOR"); }
   	{REAL}				{ analiza("REAL"); }
   	{OPERADOR}			{ analiza("OPERADOR"); }
-  	"\n"				{ analiza("SALTO");}
-  	{CADENA}          	{ analiza("CADENA"); }			
+  	"\n"				{ yybegin(YYINITIAL); }
+  	{CADENA}          	{ analiza("CADENA"); }
 }
-
-
-

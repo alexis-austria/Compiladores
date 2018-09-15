@@ -6,6 +6,8 @@ public class AnalizadorLexico {
 
     public AnalizadorLexico(String archivo){
         try {
+            PrintStream out = new PrintStream(new FileOutputStream("output.txt"));
+            System.setOut(out);
             Reader lector = new FileReader("src/main/resources/test.txt");
             lexer = new Flexer(lector);
         }
