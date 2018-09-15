@@ -5,6 +5,7 @@ import java.util.*;
 %public
 %class Flexer
 %unicode
+%line
 %standalone
 %line
 
