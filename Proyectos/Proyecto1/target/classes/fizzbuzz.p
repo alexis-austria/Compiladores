@@ -1,7 +1,9 @@
-if 9 > 7:
-  v_x = -4
-  while v_x < 1:
-    v_x += 1
-    print v_x * 3
-else:
-   v_x = "Hello world"
+counter = 1
+while (counter < 31):
+    if counter % 3 == 0:
+        print "fizz"
+    if counter % 5 == 0:
+        print "buzz"
+    if counter % 5 != 0 and counter % 3 != 0:
+        print counter
+    counter+= 1
