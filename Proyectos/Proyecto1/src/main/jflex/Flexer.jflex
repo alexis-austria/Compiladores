@@ -47,6 +47,7 @@ ENTERO = 0 | [1-9][0-9]*
 REAL = "."[0-9]+ | {ENTERO}"."[0-9]+ | {ENTERO}"."
 RESERVADA     = "and"|"not"|"while"|"elif"|"or"|"else"|"if"|"print"
 OPERADOR = "+" | "-" | "*" |  "/" | "%" | "<" | ">" | ">=" | "<=" | "=" | "!"| "+="
+CADENAINVALIDA = (\".*)+ (\".|\\.) + (\")
 CADENA        = (\".*)(\")
 
 %state INDENTACION
@@ -63,10 +64,12 @@ CADENA        = (\".*)(\")
   {REAL}			{ System.out.printf("REAL(%s)",yytext()); }
   {OPERADOR}		{ System.out.printf("OPERADOR(%s)",yytext()); }
   "\n"				{ System.out.println("SALTO\n"); yybegin(INDENTACION);}
+  {CADENAINVALIDA}      { System.out.println("\n" + "Error:Cadena mal formada" + " en linea " + (yyline+1)); System.exit(1);}
   {CADENA}          { System.out.printf("CADENA(%s)", yytext()); }
 }
 
 <INDENTACION> {
+        
 	{ESPACIO}			{ espacios++; }
 	"\t"				{ espacios+=4; }
 	"True"              { analiza("BOOLEANO"); }
@@ -78,8 +81,6 @@ CADENA        = (\".*)(\")
   	{REAL}				{ analiza("REAL"); }
   	{OPERADOR}			{ analiza("OPERADOR"); }
   	"\n"				{ analiza("SALTO");}
-  	{CADENA}          	{ analiza("CADENA"); }			
+  	{CADENA}          	{ analiza("CADENA"); }	
+		
 }
-
-
-
