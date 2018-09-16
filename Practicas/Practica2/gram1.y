@@ -12,13 +12,13 @@ start:   {System.out.println("[OK]");}
      | factor {System.out.println("[OK]");}
 expr: X term;
 
-X: expr X PLUS | expr X MINUS 
+X: expr PLUS X | expr  MINUS X
  |
  ;
 
 term: Y factor ;
 
-Y: TIMES term Y | DIVIDE term Y
+Y: term TIMES Y | term DIVIDE  Y
  |
  ;
 
