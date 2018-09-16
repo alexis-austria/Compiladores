@@ -7,9 +7,10 @@ import java.io.*;
 
 %%
 start:   {System.out.println("[OK]");}
-     | expr {System.out.println("[OK]");}
-     | term {System.out.println("[OK]");}
-     | factor {System.out.println("[OK]");}
+         | expr {System.out.println("[OK]");}
+         | term {System.out.println("[OK]");}
+         | factor {System.out.println("[OK]");}
+
 expr: X term;
 
 X: expr PLUS X | expr  MINUS X
