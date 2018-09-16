@@ -29,7 +29,7 @@ Z: MINUS
  ;
  %%
 
- private Letras2 alexico;
+ private Letras alexico;
 
  private int yylex() {
     int yyl_return = -1;
@@ -46,13 +46,13 @@ public void yyerror (String error) {
     System.exit(2);
 }
 
- public Parser2(Reader r) {
-    alexico = new Letras2(r);
+ public Parser(Reader r) {
+    alexico = new Letras(r);
  }
 
  public static void main(String args[]) {
     try {
-        Parser2 yyparser = new Parser2(new FileReader(args[0]));
+        Parser yyparser = new Parser(new FileReader(args[0]));
         yyparser.yyparse();
     } catch(FileNotFoundException e) {
         System.err.println("El archivo " + args[0] + " no existe");
