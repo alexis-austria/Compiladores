@@ -1,12 +1,15 @@
 
 
+
+
 // parser.y
 %{
 import java.io.*;  
 %}
 
 
-%token PLUS, MINUS, TIMES, DIVIDE, NUMBER
+%token PLUS, MINUS, TIMES, DIVIDE, 
+%token <dval> NUMBER
 %type<dval> expr, term, factor
 
 %%
@@ -18,18 +21,14 @@ start:   {System.out.println("[OK]");}
 expr:	term
 		|expr PLUS term
 		|expr MINUS term
-		|
 		;
 term:	factor
 		|term TIMES factor
 		|term DIVIDE factor
-		|
 		;
 factor:	NUMBER
 		|MINUS NUMBER
-		|
 		;
-
  %%
 
 
