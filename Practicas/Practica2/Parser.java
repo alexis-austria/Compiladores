@@ -16,14 +16,14 @@
 
 
 
-//#line 2 "gram2.y"
-import java.io.*;
-//#line 19 "Parser2.java"
+//#line 5 "gram1.y"
+import java.io.*;  
+//#line 19 "Parser.java"
 
 
 
 
-public class Parser2
+public class Parser
 {
 
 boolean yydebug;        //do I want debug output?
@@ -100,34 +100,34 @@ int i;
 
 
 //########## SEMANTIC VALUES ##########
-//public class Parser2Val is defined in Parser2Val.java
+//public class ParserVal is defined in ParserVal.java
 
 
 String   yytext;//user variable to return contextual strings
-Parser2Val yyval; //used to return semantic vals from action routines
-Parser2Val yylval;//the 'lval' (result) I got from yylex()
-Parser2Val valstk[];
+ParserVal yyval; //used to return semantic vals from action routines
+ParserVal yylval;//the 'lval' (result) I got from yylex()
+ParserVal valstk[];
 int valptr;
 //###############################################################
 // methods: value stack push,pop,drop,peek.
 //###############################################################
 void val_init()
 {
-  valstk=new Parser2Val[YYSTACKSIZE];
-  yyval=new Parser2Val();
-  yylval=new Parser2Val();
+  valstk=new ParserVal[YYSTACKSIZE];
+  yyval=new ParserVal();
+  yylval=new ParserVal();
   valptr=-1;
 }
-void val_push(Parser2Val val)
+void val_push(ParserVal val)
 {
   if (valptr>=YYSTACKSIZE)
     return;
   valstk[++valptr]=val;
 }
-Parser2Val val_pop()
+ParserVal val_pop()
 {
   if (valptr<0)
-    return new Parser2Val();
+    return new ParserVal();
   return valstk[valptr--];
 }
 void val_drop(int cnt)
@@ -138,17 +138,17 @@ int ptr;
     return;
   valptr = ptr;
 }
-Parser2Val val_peek(int relative)
+ParserVal val_peek(int relative)
 {
 int ptr;
   ptr=valptr-relative;
   if (ptr<0)
-    return new Parser2Val();
+    return new ParserVal();
   return valstk[ptr];
 }
-final Parser2Val dup_yyval(Parser2Val val)
+final ParserVal dup_yyval(ParserVal val)
 {
-  Parser2Val dup = new Parser2Val();
+  ParserVal dup = new ParserVal();
   dup.ival = val.ival;
   dup.dval = val.dval;
   dup.sval = val.sval;
@@ -168,33 +168,33 @@ final static short yylhs[] = {                           -1,
 };
 final static short yylen[] = {                            2,
     0,    1,    1,    1,    1,    3,    3,    1,    3,    3,
-    2,    1,
+    1,    2,
 };
 final static short yydefred[] = {                         0,
-    0,   12,    0,    2,    0,    0,   11,    0,    0,    0,
-    0,    6,    0,    0,    7,    9,   10,
+    0,   11,    0,    0,    0,    0,   12,    0,    0,    0,
+    0,    0,    8,    0,    9,   10,
 };
 final static short yydgoto[] = {                          3,
-    4,   13,   14,
+    4,    5,   13,
 };
-final static short yysindex[] = {                      -254,
- -261,    0,    0,    0, -252, -251,    0, -254, -254, -254,
- -254,    0, -252, -251,    0,    0,    0,
+final static short yysindex[] = {                      -258,
+ -257,    0,    0, -247, -245,    0,    0, -258, -258, -258,
+ -258, -245,    0, -245,    0,    0,
 };
-final static short yyrindex[] = {                        10,
-    0,    0,    0,    0,   11,    1,    0,    0,    0,    0,
-    0,    0,   16,    3,    0,    0,    0,
+final static short yyrindex[] = {                         6,
+    0,    0,    0,   18,    5,    1,    0,    0,    0,    0,
+    0,    7,    0,    9,    0,    0,
 };
 final static short yygindex[] = {                         0,
-    6,    2,   17,
+    0,    8,    2,
 };
-final static int YYTABLESIZE=261;
+final static int YYTABLESIZE=267;
 static short yytable[];
 static { yytable();}
 static void yytable(){
-yytable = new short[]{                          7,
-    4,    5,    8,    1,    8,    9,    2,   10,   11,    1,
-    3,   16,   17,   12,   15,    5,    6,    0,    0,    0,
+yytable = new short[]{                          1,
+    4,    6,    2,    7,    3,    1,    6,    0,    7,    8,
+    9,   15,   16,   10,   11,   12,   14,    2,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
@@ -219,15 +219,15 @@ yytable = new short[]{                          7,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    8,    8,    8,
-    8,
+    8,    5,    5,    6,    6,    7,    7,
 };
 }
 static short yycheck[];
 static { yycheck(); }
 static void yycheck() {
-yycheck = new short[] {                        261,
-    0,    0,    0,  258,  257,  258,  261,  259,  260,    0,
-    0,   10,   11,    8,    9,    0,    0,   -1,   -1,   -1,
+yycheck = new short[] {                        258,
+    0,    0,  261,  261,    0,    0,    0,   -1,    0,  257,
+  258,   10,   11,  259,  260,    8,    9,    0,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
@@ -251,8 +251,8 @@ yycheck = new short[] {                        261,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
-   -1,   -1,   -1,   -1,   -1,   -1,   -1,  257,  258,  257,
-  258,
+   -1,   -1,   -1,   -1,   -1,   -1,   -1,  257,  258,  259,
+  260,  257,  258,  257,  258,  257,  258,
 };
 }
 final static short YYFINAL=3;
@@ -283,47 +283,52 @@ final static String yyrule[] = {
 "start : term",
 "start : factor",
 "expr : term",
-"expr : term PLUS expr",
-"expr : term MINUS expr",
+"expr : expr PLUS term",
+"expr : expr MINUS term",
 "term : factor",
-"term : factor TIMES term",
-"term : factor DIVIDE term",
-"factor : MINUS NUMBER",
+"term : term TIMES factor",
+"term : term DIVIDE factor",
 "factor : NUMBER",
+"factor : MINUS NUMBER",
 };
 
-//#line 25 "gram2.y"
+//#line 31 "gram1.y"
 
- private Letras2 alexico;
 
- private int yylex() {
-    int yyl_return = -1;
-    try {
-        yyl_return = alexico.yylex();
-    } catch (IOException e) {
-        System.err.println("Error de IO." + e);
-    }
-    return yyl_return;
- }
+private Letras alexico;
 
-public void yyerror (String error) {
-    System.err.println("[ERROR] " + error);
-    System.exit(2);
+/* Regresar átomos */
+private int yylex() {
+	int yyl_return = -1;
+	try {
+		yyl_return = alexico.yylex();
+	} catch (IOException e) {
+		System.err.println("Error de IO. "+e);
+	}
+	return yyl_return;
 }
 
- public Parser2(Reader r) {
-    alexico = new Letras2(r);
- }
+/* Reportar error. */
+public void yyerror(String error) {
+	System.err.println("[ERROR] "+error);
+	System.exit(1);
+}
 
- public static void main(String args[]) {
-    try {
-        Parser2 yyparser = new Parser2(new FileReader(args[0]));
-        yyparser.yyparse();
-    } catch(FileNotFoundException e) {
-        System.err.println("El archivo " + args[0] + " no existe");
-    }
- }
-//#line 255 "Parser2.java"
+/* Constructor. */
+public Parser(Reader r) {
+	alexico = new Letras(r);
+}
+
+/* Analizador sintáctico sobre un archivo. */
+public static void main(String[] args) {
+	try {
+		Parser yyparser = new Parser(new FileReader(args[0]));
+		yyparser.yyparse();
+	} catch(FileNotFoundException e) {
+		System.err.println("El archivo " + args[0] + " no existe.");
+	}
+}
+//#line 260 "Parser.java"
 //###############################################################
 // method: yylexdebug : check lexer state
 //###############################################################
@@ -478,54 +483,54 @@ boolean doaction;
       {
 //########## USER-SUPPLIED ACTIONS ##########
 case 1:
-//#line 9 "gram2.y"
+//#line 14 "gram1.y"
 {System.out.println("[OK]");}
 break;
 case 2:
-//#line 10 "gram2.y"
+//#line 15 "gram1.y"
 {System.out.println("[OK]");}
 break;
 case 3:
-//#line 11 "gram2.y"
+//#line 16 "gram1.y"
 {System.out.println("[OK]");}
 break;
 case 4:
-//#line 12 "gram2.y"
+//#line 17 "gram1.y"
 {System.out.println("[OK]");}
 break;
 case 5:
-//#line 14 "gram2.y"
+//#line 19 "gram1.y"
 {dump_stacks(stateptr);}
 break;
 case 6:
-//#line 15 "gram2.y"
+//#line 20 "gram1.y"
 {dump_stacks(stateptr);}
 break;
 case 7:
-//#line 16 "gram2.y"
+//#line 21 "gram1.y"
 {dump_stacks(stateptr);}
 break;
 case 8:
-//#line 18 "gram2.y"
+//#line 23 "gram1.y"
 {dump_stacks(stateptr);}
 break;
 case 9:
-//#line 19 "gram2.y"
+//#line 24 "gram1.y"
 {dump_stacks(stateptr);}
 break;
 case 10:
-//#line 20 "gram2.y"
+//#line 25 "gram1.y"
 {dump_stacks(stateptr);}
 break;
 case 11:
-//#line 22 "gram2.y"
+//#line 27 "gram1.y"
 {dump_stacks(stateptr);}
 break;
 case 12:
-//#line 23 "gram2.y"
+//#line 28 "gram1.y"
 {dump_stacks(stateptr);}
 break;
-//#line 452 "Parser2.java"
+//#line 457 "Parser.java"
 //########## END OF USER-SUPPLIED ACTIONS ##########
     }//switch
     //#### Now let's reduce... ####
@@ -588,7 +593,7 @@ public void run()
  * Default constructor.  Turn off with -Jnoconstruct .
 
  */
-public Parser2()
+public Parser()
 {
   //nothing to do
 }
@@ -598,7 +603,7 @@ public Parser2()
  * Create a parser, setting the debug to true or false.
  * @param debugMe true for debugging, false for no debug.
  */
-public Parser2(boolean debugMe)
+public Parser(boolean debugMe)
 {
   yydebug=debugMe;
 }

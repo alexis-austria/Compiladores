@@ -3,31 +3,25 @@ import java.io.*;
 %}
 
 %token PLUS, MINUS, TIMES, DIVIDE, NUMBER
-%type<dval> expr, term, factor, X, Y, Z
+%type<dval> expr, term, factor
 
 %%
 start:   {System.out.println("[OK]");}
      | expr {System.out.println("[OK]");}
      | term {System.out.println("[OK]");}
      | factor {System.out.println("[OK]");}
-expr: term X;
 
-X: PLUS expr X | MINUS expr X
- |
- ;
+expr: term {dump_stacks(stateptr);}
+    | term PLUS expr {dump_stacks(stateptr);}
+    | term MINUS expr {dump_stacks(stateptr);};
 
-term: factor Y;
+term: factor {dump_stacks(stateptr);}
+    | factor TIMES term {dump_stacks(stateptr);}
+    | factor DIVIDE term {dump_stacks(stateptr);};
 
-Y: TIMES term Y | DIVIDE term Y
- |
- ;
-
-factor: Z NUMBER;
-
-Z: MINUS
- |
- ;
- %%
+factor: MINUS NUMBER {dump_stacks(stateptr);}
+      | NUMBER {dump_stacks(stateptr);};
+%%
 
  private Letras2 alexico;
 

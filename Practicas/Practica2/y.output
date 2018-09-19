@@ -5,263 +5,183 @@
    3        | term
    4        | factor
 
-   5  expr : term X
+   5  expr : term
+   6       | term PLUS expr
+   7       | term MINUS expr
 
-   6  X : PLUS expr X
-   7    | MINUS expr
-   8    |
+   8  term : factor
+   9       | factor TIMES term
+  10       | factor DIVIDE term
 
-   9  term : factor Y
-
-  10  Y : TIMES term Y
-  11    | DIVIDE term Y
-  12    |
-
-  13  factor : Z NUMBER
-
-  14  Z : MINUS
-  15    |
+  11  factor : MINUS NUMBER
+  12         | NUMBER
 
 state 0
 	$accept : . start $end  (0)
 	start : .  (1)
-	Z : .  (15)
 
 	MINUS  shift 1
+	NUMBER  shift 2
 	$end  reduce 1
-	NUMBER  reduce 15
 
-	start  goto 2
-	expr  goto 3
-	term  goto 4
-	factor  goto 5
-	Z  goto 6
+	start  goto 3
+	expr  goto 4
+	term  goto 5
+	factor  goto 6
 
 
 state 1
-	Z : MINUS .  (14)
+	factor : MINUS . NUMBER  (11)
 
-	.  reduce 14
+	NUMBER  shift 7
+	.  error
 
 
 state 2
+	factor : NUMBER .  (12)
+
+	.  reduce 12
+
+
+state 3
 	$accept : start . $end  (0)
 
 	$end  accept
 
 
-state 3
+state 4
 	start : expr .  (2)
 
 	.  reduce 2
 
 
-4: reduce/reduce conflict (reduce 3, reduce 8) on $end
-state 4
+5: reduce/reduce conflict (reduce 3, reduce 5) on $end
+state 5
 	start : term .  (3)
-	expr : term . X  (5)
-	X : .  (8)
+	expr : term .  (5)
+	expr : term . PLUS expr  (6)
+	expr : term . MINUS expr  (7)
 
-	PLUS  shift 7
-	MINUS  shift 8
+	PLUS  shift 8
+	MINUS  shift 9
 	$end  reduce 3
 
-	X  goto 9
 
-
-5: reduce/reduce conflict (reduce 4, reduce 12) on $end
-state 5
+6: reduce/reduce conflict (reduce 4, reduce 8) on $end
+state 6
 	start : factor .  (4)
-	term : factor . Y  (9)
-	Y : .  (12)
+	term : factor .  (8)
+	term : factor . TIMES term  (9)
+	term : factor . DIVIDE term  (10)
 
 	TIMES  shift 10
 	DIVIDE  shift 11
 	$end  reduce 4
-	PLUS  reduce 12
-	MINUS  reduce 12
-
-	Y  goto 12
-
-
-state 6
-	factor : Z . NUMBER  (13)
-
-	NUMBER  shift 13
-	.  error
+	PLUS  reduce 8
+	MINUS  reduce 8
 
 
 state 7
-	X : PLUS . expr X  (6)
-	Z : .  (15)
-
-	MINUS  shift 1
-	NUMBER  reduce 15
-
-	expr  goto 14
-	term  goto 15
-	factor  goto 16
-	Z  goto 6
-
-
-state 8
-	X : MINUS . expr  (7)
-	Z : .  (15)
-
-	MINUS  shift 1
-	NUMBER  reduce 15
-
-	expr  goto 17
-	term  goto 15
-	factor  goto 16
-	Z  goto 6
-
-
-state 9
-	expr : term X .  (5)
-
-	.  reduce 5
-
-
-state 10
-	Y : TIMES . term Y  (10)
-	Z : .  (15)
-
-	MINUS  shift 1
-	NUMBER  reduce 15
-
-	term  goto 18
-	factor  goto 16
-	Z  goto 6
-
-
-state 11
-	Y : DIVIDE . term Y  (11)
-	Z : .  (15)
-
-	MINUS  shift 1
-	NUMBER  reduce 15
-
-	term  goto 19
-	factor  goto 16
-	Z  goto 6
-
-
-state 12
-	term : factor Y .  (9)
-
-	.  reduce 9
-
-
-state 13
-	factor : Z NUMBER .  (13)
-
-	.  reduce 13
-
-
-14: shift/reduce conflict (shift 7, reduce 8) on PLUS
-14: shift/reduce conflict (shift 8, reduce 8) on MINUS
-state 14
-	X : PLUS expr . X  (6)
-	X : .  (8)
-
-	PLUS  shift 7
-	MINUS  shift 8
-	$end  reduce 8
-
-	X  goto 20
-
-
-15: shift/reduce conflict (shift 7, reduce 8) on PLUS
-15: shift/reduce conflict (shift 8, reduce 8) on MINUS
-state 15
-	expr : term . X  (5)
-	X : .  (8)
-
-	PLUS  shift 7
-	MINUS  shift 8
-	$end  reduce 8
-
-	X  goto 9
-
-
-16: shift/reduce conflict (shift 10, reduce 12) on TIMES
-16: shift/reduce conflict (shift 11, reduce 12) on DIVIDE
-state 16
-	term : factor . Y  (9)
-	Y : .  (12)
-
-	TIMES  shift 10
-	DIVIDE  shift 11
-	$end  reduce 12
-	PLUS  reduce 12
-	MINUS  reduce 12
-
-	Y  goto 12
-
-
-state 17
-	X : MINUS expr .  (7)
-
-	.  reduce 7
-
-
-18: shift/reduce conflict (shift 10, reduce 12) on TIMES
-18: shift/reduce conflict (shift 11, reduce 12) on DIVIDE
-state 18
-	Y : TIMES term . Y  (10)
-	Y : .  (12)
-
-	TIMES  shift 10
-	DIVIDE  shift 11
-	$end  reduce 12
-	PLUS  reduce 12
-	MINUS  reduce 12
-
-	Y  goto 21
-
-
-19: shift/reduce conflict (shift 10, reduce 12) on TIMES
-19: shift/reduce conflict (shift 11, reduce 12) on DIVIDE
-state 19
-	Y : DIVIDE term . Y  (11)
-	Y : .  (12)
-
-	TIMES  shift 10
-	DIVIDE  shift 11
-	$end  reduce 12
-	PLUS  reduce 12
-	MINUS  reduce 12
-
-	Y  goto 22
-
-
-state 20
-	X : PLUS expr X .  (6)
-
-	.  reduce 6
-
-
-state 21
-	Y : TIMES term Y .  (10)
-
-	.  reduce 10
-
-
-state 22
-	Y : DIVIDE term Y .  (11)
+	factor : MINUS NUMBER .  (11)
 
 	.  reduce 11
 
 
-State 4 contains 1 reduce/reduce conflict.
+state 8
+	expr : term PLUS . expr  (6)
+
+	MINUS  shift 1
+	NUMBER  shift 2
+	.  error
+
+	expr  goto 12
+	term  goto 13
+	factor  goto 14
+
+
+state 9
+	expr : term MINUS . expr  (7)
+
+	MINUS  shift 1
+	NUMBER  shift 2
+	.  error
+
+	expr  goto 15
+	term  goto 13
+	factor  goto 14
+
+
+state 10
+	term : factor TIMES . term  (9)
+
+	MINUS  shift 1
+	NUMBER  shift 2
+	.  error
+
+	term  goto 16
+	factor  goto 14
+
+
+state 11
+	term : factor DIVIDE . term  (10)
+
+	MINUS  shift 1
+	NUMBER  shift 2
+	.  error
+
+	term  goto 17
+	factor  goto 14
+
+
+state 12
+	expr : term PLUS expr .  (6)
+
+	.  reduce 6
+
+
+state 13
+	expr : term .  (5)
+	expr : term . PLUS expr  (6)
+	expr : term . MINUS expr  (7)
+
+	PLUS  shift 8
+	MINUS  shift 9
+	$end  reduce 5
+
+
+state 14
+	term : factor .  (8)
+	term : factor . TIMES term  (9)
+	term : factor . DIVIDE term  (10)
+
+	TIMES  shift 10
+	DIVIDE  shift 11
+	$end  reduce 8
+	PLUS  reduce 8
+	MINUS  reduce 8
+
+
+state 15
+	expr : term MINUS expr .  (7)
+
+	.  reduce 7
+
+
+state 16
+	term : factor TIMES term .  (9)
+
+	.  reduce 9
+
+
+state 17
+	term : factor DIVIDE term .  (10)
+
+	.  reduce 10
+
+
 State 5 contains 1 reduce/reduce conflict.
-State 14 contains 2 shift/reduce conflicts.
-State 15 contains 2 shift/reduce conflicts.
-State 16 contains 2 shift/reduce conflicts.
-State 18 contains 2 shift/reduce conflicts.
-State 19 contains 2 shift/reduce conflicts.
+State 6 contains 1 reduce/reduce conflict.
 
 
-7 terminals, 8 nonterminals
-16 grammar rules, 23 states
+7 terminals, 5 nonterminals
+13 grammar rules, 18 states
