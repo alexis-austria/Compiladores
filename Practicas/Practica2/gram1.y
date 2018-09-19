@@ -1,7 +1,5 @@
 
 
-
-
 // parser.y
 %{
 import java.io.*;  
@@ -18,16 +16,16 @@ start:   {System.out.println("[OK]");}
      | term {System.out.println("[OK]");}
      | factor {System.out.println("[OK]");}
 
-expr:	term
-		|expr PLUS term
-		|expr MINUS term
+expr:	term	 {dump_stacks(stateptr);}  
+		|expr PLUS term	{dump_stacks(stateptr);} 
+		|expr MINUS term	{dump_stacks(stateptr);} 
 		;
-term:	factor
-		|term TIMES factor
-		|term DIVIDE factor
+term:	factor	{dump_stacks(stateptr);} 
+		|term TIMES factor	{dump_stacks(stateptr);} 
+		|term DIVIDE factor	{dump_stacks(stateptr);} 
 		;
-factor:	NUMBER
-		|MINUS NUMBER
+factor:	NUMBER	{dump_stacks(stateptr);} 
+		|MINUS NUMBER	{dump_stacks(stateptr);} 
 		;
  %%
 
