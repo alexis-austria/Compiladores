@@ -13,7 +13,7 @@ NUMBER = 0 | [1-9][0-9]*
 "*" {return Parser.TIMES;}
 "/" {return Parser.DIVIDE;}
 {NUMBER} {return Parser.NUMBER;}
-"\n" {}
+"\n" {return Parser.NEWLINE;}
 " " {}
 [^] {System.out.println("ERROR: La expresión aritmética no está bien formada.");
       System.exit(1);}
