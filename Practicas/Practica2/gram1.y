@@ -1,20 +1,21 @@
 
 
+
 // parser.y
 %{
 import java.io.*;  
 %}
 
 
-%token PLUS, MINUS, TIMES, DIVIDE, 
+%token PLUS, MINUS, TIMES, DIVIDE
 %token <dval> NUMBER
 %type<dval> expr, term, factor
 
 %%
-start:   {System.out.println("[OK]");}
-     | expr {System.out.println("[OK]");}
-     | term {System.out.println("[OK]");}
-     | factor {System.out.println("[OK]");}
+start:  {System.out.println("[OK]");}
+     | expr start  {System.out.println("[OK]");}
+     | term start  {System.out.println("[OK]");}
+     | factor start  {System.out.println("[OK]");}
 
 expr:	term	 {dump_stacks(stateptr);}  
 		|expr PLUS term	{dump_stacks(stateptr);} 
