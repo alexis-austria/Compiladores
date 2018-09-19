@@ -6,7 +6,7 @@ import java.io.*;
 %type<dval> expr, term, factor
 
 %%
-start:   {System.out.println("[OK]");}
+start:
      | expr NEWLINE start {System.out.println("[OK]");}
      | term NEWLINE start {System.out.println("[OK]");}
      | factor NEWLINE start {System.out.println("[OK]");}

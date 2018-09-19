@@ -9,10 +9,10 @@ import java.io.*;
 %type<dval> expr, term, factor
 
 %%
-start:  {System.out.println("[OK]");}
-     | expr start {System.out.println("[OK]");}
-     | term start {System.out.println("[OK]");}
-     | factor start  {System.out.println("[OK]");}
+start:
+     | expr NEWLINE start {System.out.println("[OK]");}
+     | term NEWLINE start {System.out.println("[OK]");}
+     | factor NEWLINE start {System.out.println("[OK]");}
 
 expr:	term	 {dump_stacks(stateptr);}
 		|expr PLUS term	{dump_stacks(stateptr);}
