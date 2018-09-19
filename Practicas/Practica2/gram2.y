@@ -2,14 +2,14 @@
 import java.io.*;
 %}
 
-%token PLUS, MINUS, TIMES, DIVIDE, NUMBER
+%token PLUS, MINUS, TIMES, DIVIDE, NUMBER, NEWLINE
 %type<dval> expr, term, factor
 
 %%
 start:   {System.out.println("[OK]");}
-     | expr {System.out.println("[OK]");}
-     | term {System.out.println("[OK]");}
-     | factor {System.out.println("[OK]");}
+     | expr NEWLINE start {System.out.println("[OK]");}
+     | term NEWLINE start {System.out.println("[OK]");}
+     | factor NEWLINE start {System.out.println("[OK]");}
 
 expr: term {dump_stacks(stateptr);}
     | term PLUS expr {dump_stacks(stateptr);}

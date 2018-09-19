@@ -1,9 +1,9 @@
    0  $accept : start $end
 
    1  start :
-   2        | expr
-   3        | term
-   4        | factor
+   2        | expr NEWLINE start
+   3        | term NEWLINE start
+   4        | factor NEWLINE start
 
    5  expr : term
    6       | term PLUS expr
@@ -50,33 +50,34 @@ state 3
 
 
 state 4
-	start : expr .  (2)
+	start : expr . NEWLINE start  (2)
 
-	.  reduce 2
+	NEWLINE  shift 8
+	.  error
 
 
-5: reduce/reduce conflict (reduce 3, reduce 5) on $end
+5: shift/reduce conflict (shift 11, reduce 5) on NEWLINE
 state 5
-	start : term .  (3)
+	start : term . NEWLINE start  (3)
 	expr : term .  (5)
 	expr : term . PLUS expr  (6)
 	expr : term . MINUS expr  (7)
 
-	PLUS  shift 8
-	MINUS  shift 9
-	$end  reduce 3
+	PLUS  shift 9
+	MINUS  shift 10
+	NEWLINE  shift 11
 
 
-6: reduce/reduce conflict (reduce 4, reduce 8) on $end
+6: shift/reduce conflict (shift 14, reduce 8) on NEWLINE
 state 6
-	start : factor .  (4)
+	start : factor . NEWLINE start  (4)
 	term : factor .  (8)
 	term : factor . TIMES term  (9)
 	term : factor . DIVIDE term  (10)
 
-	TIMES  shift 10
-	DIVIDE  shift 11
-	$end  reduce 4
+	TIMES  shift 12
+	DIVIDE  shift 13
+	NEWLINE  shift 14
 	PLUS  reduce 8
 	MINUS  reduce 8
 
@@ -88,100 +89,160 @@ state 7
 
 
 state 8
+	start : expr NEWLINE . start  (2)
+	start : .  (1)
+
+	MINUS  shift 1
+	NUMBER  shift 2
+	$end  reduce 1
+
+	start  goto 15
+	expr  goto 4
+	term  goto 5
+	factor  goto 6
+
+
+state 9
 	expr : term PLUS . expr  (6)
 
 	MINUS  shift 1
 	NUMBER  shift 2
 	.  error
 
-	expr  goto 12
-	term  goto 13
-	factor  goto 14
+	expr  goto 16
+	term  goto 17
+	factor  goto 18
 
 
-state 9
+state 10
 	expr : term MINUS . expr  (7)
 
 	MINUS  shift 1
 	NUMBER  shift 2
 	.  error
 
-	expr  goto 15
-	term  goto 13
-	factor  goto 14
+	expr  goto 19
+	term  goto 17
+	factor  goto 18
 
 
-state 10
+state 11
+	start : term NEWLINE . start  (3)
+	start : .  (1)
+
+	MINUS  shift 1
+	NUMBER  shift 2
+	$end  reduce 1
+
+	start  goto 20
+	expr  goto 4
+	term  goto 5
+	factor  goto 6
+
+
+state 12
 	term : factor TIMES . term  (9)
 
 	MINUS  shift 1
 	NUMBER  shift 2
 	.  error
 
-	term  goto 16
-	factor  goto 14
+	term  goto 21
+	factor  goto 18
 
 
-state 11
+state 13
 	term : factor DIVIDE . term  (10)
 
 	MINUS  shift 1
 	NUMBER  shift 2
 	.  error
 
-	term  goto 17
-	factor  goto 14
+	term  goto 22
+	factor  goto 18
 
 
-state 12
+state 14
+	start : factor NEWLINE . start  (4)
+	start : .  (1)
+
+	MINUS  shift 1
+	NUMBER  shift 2
+	$end  reduce 1
+
+	start  goto 23
+	expr  goto 4
+	term  goto 5
+	factor  goto 6
+
+
+state 15
+	start : expr NEWLINE start .  (2)
+
+	.  reduce 2
+
+
+state 16
 	expr : term PLUS expr .  (6)
 
 	.  reduce 6
 
 
-state 13
+state 17
 	expr : term .  (5)
 	expr : term . PLUS expr  (6)
 	expr : term . MINUS expr  (7)
 
-	PLUS  shift 8
-	MINUS  shift 9
-	$end  reduce 5
+	PLUS  shift 9
+	MINUS  shift 10
+	NEWLINE  reduce 5
 
 
-state 14
+state 18
 	term : factor .  (8)
 	term : factor . TIMES term  (9)
 	term : factor . DIVIDE term  (10)
 
-	TIMES  shift 10
-	DIVIDE  shift 11
-	$end  reduce 8
+	TIMES  shift 12
+	DIVIDE  shift 13
 	PLUS  reduce 8
 	MINUS  reduce 8
+	NEWLINE  reduce 8
 
 
-state 15
+state 19
 	expr : term MINUS expr .  (7)
 
 	.  reduce 7
 
 
-state 16
+state 20
+	start : term NEWLINE start .  (3)
+
+	.  reduce 3
+
+
+state 21
 	term : factor TIMES term .  (9)
 
 	.  reduce 9
 
 
-state 17
+state 22
 	term : factor DIVIDE term .  (10)
 
 	.  reduce 10
 
 
-State 5 contains 1 reduce/reduce conflict.
-State 6 contains 1 reduce/reduce conflict.
+state 23
+	start : factor NEWLINE start .  (4)
+
+	.  reduce 4
 
 
-7 terminals, 5 nonterminals
-13 grammar rules, 18 states
+State 5 contains 1 shift/reduce conflict.
+State 6 contains 1 shift/reduce conflict.
+
+
+8 terminals, 5 nonterminals
+13 grammar rules, 24 states
