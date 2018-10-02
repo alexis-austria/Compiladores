@@ -5,12 +5,10 @@ import java.io.*;
 
 %}
 
-%token SALTO, EQUAL, PRINT, IF, COLON, ELSE, WHILE, INDENTA, OR, AND, NOT, LESS, MORE,
+%token<sval> SALTO, EQUAL, PRINT, IF, COLON, ELSE, WHILE, INDENTA, OR, AND, NOT, LESS, MORE,
        DEQ, LEQ, GEQ, DIFF, PLUS, MINUS, TIMES, DIVIDE, MODULO, DASH, BY, ID, ENTERO,
-       REAL, BOOLEANO, LEFTP, RIGHTP
-%type fileinput, stmt, simplestmt, compundstmt, smallstmt, exprstmt, printstmt, compoundstmt, ifstmt,
-      whilestmt, test, suite, aux, ortest, andtest, aux2, aux3, nottest, comparison, compop, aux4,
-      expr, aux5, term, factor, aux6, power, atom
+       REAL, BOOLEANO, LEFTP, RIGHTP, DEINDENTA, CADENA
+%type<sval> fileinput
 
 
 %%
@@ -20,7 +18,7 @@ fileinput:   {System.out.println("[OK]");}
          ;
 
 stmt: simplestmt
-    | compundstmt
+    | compoundstmt
     ;
 
 simplestmt: smallstmt SALTO;
