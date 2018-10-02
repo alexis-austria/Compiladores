@@ -27,7 +27,7 @@ import java.util.*;
 	int espacios = 0;
 	int contadorIndentaciones = 0;
 
-	public void analiza(String lexema){
+	public void analiza(String lexema,espacios){
 		if(indentaciones.empty()){
 			if(espacios == 0){
 				//System.out.printf("%s(%s)",lexema,yytext());
@@ -104,38 +104,38 @@ SALTO          = "\n"
 <YYINITIAL> {
   \# ~"\n" 	    {/*IGNORAR*/}
   {ESPACIO}         {/*IGNORAR*/}
-  "True"            { return Parser.BOOLEANO;}
-  "False"           { return Parser.BOOLEANO;}
-  {ENTERO}          { return Parset.ENTERO;}
-  {REAL}	    { return Parser.REAL;}
-  {EQUAL}           { return Parser.EQUAL;}
-  {PRINT}           { return Parser.PRINT;}
-  {IF}              { return Parser.IF;}
-  {COLON}           { return Parser.COLON;}
-  {ELSE}            { return Parser.ELSE;}
-  {WHILE}           { return Parser.WHILE;}
-  {OR}              { return Parser.OR;}
-  {AND}             { return Parser.AND;}
-  {NOT}             { return Parser.NOT;}
-  {LESS}            { return Parser.LESS;}
-  {MORE}            { return Parser.MORE;}
-  {DEQ}             { return Parser.DEQ;}
-  {GEQ}             { return Parser.GEQ;}
-  {LEQ}             { return Parser.LEQ;}
-  {DIFF}            { return Parser.DIFF;}
-  {PLUS}            { return Parser.PLUS;}
-  {MINUS}           { return Parser.MINUS;}
-  {TIMES}           { return Parser.TIMES;}
-  {DIVIDE}          { return Parser.DIVIDE;}
-  {MODULO}          { return Parser.MODULO;}
-  {DASH}            { return Parser.DASH;}
-  {BY}              { return Parser.BY;}
-  {ID}              { return Parser.ID;}
-  {LEFTP}           { return Parser.LEFTP;}
-  {RIGHTP}          { return Parser.RIGHTP;}
+  "True"            { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.BOOLEANO;}
+  "False"           { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.BOOLEANO;}
+  {ENTERO}          { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parset.ENTERO;}
+  {REAL}	        { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.REAL;}
+  {EQUAL}           { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.EQUAL;}
+  {PRINT}           { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.PRINT;}
+  {IF}              { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.IF;}
+  {COLON}           { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.COLON;}
+  {ELSE}            { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.ELSE;}
+  {WHILE}           { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.WHILE;}
+  {OR}              { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.OR;}
+  {AND}             { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.AND;}
+  {NOT}             { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.NOT;}
+  {LESS}            { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.LESS;}
+  {MORE}            { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.MORE;}
+  {DEQ}             { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.DEQ;}
+  {GEQ}             { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.GEQ;}
+  {LEQ}             { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.LEQ;}
+  {DIFF}            { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.DIFF;}
+  {PLUS}            { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.PLUS;}
+  {MINUS}           { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.MINUS;}
+  {TIMES}           { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.TIMES;}
+  {DIVIDE}          { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.DIVIDE;}
+  {MODULO}          { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.MODULO;}
+  {DASH}            { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.DASH;}
+  {BY}              { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.BY;}
+  {ID}              { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.ID;}
+  {LEFTP}           { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.LEFTP;}
+  {RIGHTP}          { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.RIGHTP;}
   //{INDENTA}         { return Parser.INDENTA}
   {CADENAINVALIDA}  { System.out.println("\n" + "Error:Cadena mal formada" + " en linea " + (yyline+1)); System.exit(1);}
-  {CADENA}          { return Parser.CADENA;}
+  {CADENA}          { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.CADENA;}
   {SALTO}	    {yybegin(INDENTA); espacios = 0; return Parser.SALTO;}
   [^] 	            { System.out.println("\n" + "Error:Lexema no reconocido" + " en linea " + (yyline+1)); System.exit(1); }
 }
@@ -143,12 +143,12 @@ SALTO          = "\n"
 <INDENTA> {
 	{ESPACIO}			{ espacios++; }
 	"\t"				{ espacios+=4; }
-	. 				{yypushback(1);
-					this.analiza(espacios);
-						if (contadorIndentaciones == 1) {
-							contadorIndentaciones = 0;
-							return Parser.INDENTA;
-						}}
+	. 				    {yypushback(1);
+					    this.analiza(espacios);
+						    if (contadorIndentaciones == 1) {
+							    contadorIndentaciones = 0;
+							    return Parser.INDENTA;
+						    }}
 
 	
 }
