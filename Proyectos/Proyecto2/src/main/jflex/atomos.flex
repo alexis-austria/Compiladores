@@ -27,7 +27,7 @@ import java.util.*;
 	int espacios = 0;
 	int contadorIndentaciones = 0;
 
-	public void analiza(String lexema,espacios){
+	public void analiza(espacios){
 		if(indentaciones.empty()){
 			if(espacios == 0){
 				//System.out.printf("%s(%s)",lexema,yytext());
