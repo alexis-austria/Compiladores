@@ -18,7 +18,7 @@ import java.util.*;
     * @param FileReader r
     * @param parser parser - parser
     */
-    public Letras(java.io.Reader r, Parser parser){
+    public Flexer(java.io.Reader r, Parser parser){
     	   this(r);
     	   yyparser = parser;
     }
@@ -29,9 +29,9 @@ import java.util.*;
 
 	public void analiza(String lexema){
 		if(indentaciones.empty()){
-			if(espacios == 0)
+			if(espacios == 0){
 				//System.out.printf("%s(%s)",lexema,yytext());
-			else{
+			}else{
 				//System.out.printf("INDENTA(%d)",espacios);
 				//System.out.printf("%s(%s)",lexema,yytext());
 				indentaciones.push(espacios);
@@ -104,38 +104,38 @@ SALTO          = "\n"
 <YYINITIAL> {
   \# ~"\n" 	    {/*IGNORAR*/}
   {ESPACIO}         {/*IGNORAR*/}
-  "True"            { return Parser.BOOLEANO}
-  "False"           { return Parser.BOOLEANO}
-  {ENTERO}          { return Parset.ENTERO}
-  {REAL}	    { return Parser.REAL}
-  {EQUAL}           { return Parser.EQUAL}
-  {PRINT}           { return Parser.PRINT}
-  {IF}              { return Parser.IF}
-  {COLON}           { return Parser.SEPARADOR}
-  {ELSE}            { return Parser.ELSE}
-  {WHILE}           { return Parser.WHILE}
-  {OR}              { return Parser.OR}
-  {AND}             { return Parser.AND}
-  {NOT}             { return Parser.NOT}
-  {LESS}            { return Parser.LESS}
-  {MORE}            { return Parser.MORE}
-  {DEQ}             { return Parser.DEQ}
-  {GEQ}             { return Parser.GEQ}
-  {LEQ}             { return Parser.LEQ}
-  {DIFF}            { return Parser.DIFF}
-  {PLUS}            { return Parser.PLUS}
-  {MINUS}           { return Parser.MINUS}
-  {TIMES}           { return Parser.TIMES}
-  {DIVIDE}          { return Parser.DIVIDE}
-  {MODULO}          { return Parser.MODULO}
-  {DASH}            { return Parser.DASH}
-  {BY}              { return Parser.BY}
-  {ID}              { return Parser.ID}
-  {LEFTP}           { return Parser.LEFTP }
-  {RIGHTP}          { return Parser.RIGHTP}
+  "True"            { return Parser.BOOLEANO;}
+  "False"           { return Parser.BOOLEANO;}
+  {ENTERO}          { return Parset.ENTERO;}
+  {REAL}	    { return Parser.REAL;}
+  {EQUAL}           { return Parser.EQUAL;}
+  {PRINT}           { return Parser.PRINT;}
+  {IF}              { return Parser.IF;}
+  {COLON}           { return Parser.COLON;}
+  {ELSE}            { return Parser.ELSE;}
+  {WHILE}           { return Parser.WHILE;}
+  {OR}              { return Parser.OR;}
+  {AND}             { return Parser.AND;}
+  {NOT}             { return Parser.NOT;}
+  {LESS}            { return Parser.LESS;}
+  {MORE}            { return Parser.MORE;}
+  {DEQ}             { return Parser.DEQ;}
+  {GEQ}             { return Parser.GEQ;}
+  {LEQ}             { return Parser.LEQ;}
+  {DIFF}            { return Parser.DIFF;}
+  {PLUS}            { return Parser.PLUS;}
+  {MINUS}           { return Parser.MINUS;}
+  {TIMES}           { return Parser.TIMES;}
+  {DIVIDE}          { return Parser.DIVIDE;}
+  {MODULO}          { return Parser.MODULO;}
+  {DASH}            { return Parser.DASH;}
+  {BY}              { return Parser.BY;}
+  {ID}              { return Parser.ID;}
+  {LEFTP}           { return Parser.LEFTP;}
+  {RIGHTP}          { return Parser.RIGHTP;}
   //{INDENTA}         { return Parser.INDENTA}
   {CADENAINVALIDA}  { System.out.println("\n" + "Error:Cadena mal formada" + " en linea " + (yyline+1)); System.exit(1);}
-  {CADENA}          { return Parser.CADENA}
+  {CADENA}          { return Parser.CADENA;}
   {SALTO}	    {yybegin(INDENTA); espacios = 0; return Parser.SALTO;}
   [^] 	            { System.out.println("\n" + "Error:Lexema no reconocido" + " en linea " + (yyline+1)); System.exit(1); }
 }
