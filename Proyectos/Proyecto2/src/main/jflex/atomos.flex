@@ -113,7 +113,7 @@ ID       = ([:letter:] | "_" )([:letter:] | "_" | [0-9])*
               if(numDeindenta > 0){
                 numDeindenta--;
                 //System.out.print("");
-                return.Parser.DEINDENTA;
+                return Parser.DEINDENTA;
               }
               yybegin(CODIGO);
             }
@@ -164,7 +164,7 @@ ID       = ([:letter:] | "_" )([:letter:] | "_" | [0-9])*
               if(numIndenta == 1){
                 numIndenta = 0;
                 //System.out.print("SALTOIDENTA("+numIndenta+")");
-                return.Parser.INDENTA;
+                return Parser.INDENTA;
               }
             }
 }
