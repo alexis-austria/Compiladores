@@ -54,24 +54,24 @@ import java.util.*;
 }
 %}
 
-ENTERO          = 0+ | [0-9]+
-REAL            = {ENTERO}? \. {ENTERO}?
+ENTERO              = 0+ | [0-9]+
+REAL                = {ENTERO}? \. {ENTERO}?
 TRUE                = "True"
 FALSE               = "False"
-IGUAL               = "="
-POTENCIA            = "**"
-MAS                 = "+"
-MENOS               = "-"
-MULT                = "*"
-DIV                 = "/"
-MOD                 = "%"
-PISO                = "//"
-MENOR               = "<"
-MAYOR               = ">"
-IGUALIGUAL          = "=="
-MAIGUAL             = ">="
-MEIGUAL             = "<="
-DISTINTO            = "!="
+EQUAL               = "="
+BY                  = "**"
+PLUS                = "+"
+MINUS               = "-"
+TIMES               = "*"
+DIVIDE              = "/"
+MODULO                 = "%"
+DASH                = "//"
+LESS                = "<"
+MORE                = ">"
+DEQ                 = "=="
+GEQ                 = ">="
+LEQ                 = "<="
+DIFF                = "!="
 NOT                 = "not"
 AND                 = "and"
 OR                  = "or"
@@ -79,15 +79,15 @@ IF                  = "if"
 WHILE               = "while"
 ELSE                = "else"
 PRINT               = "print"
-SEPARADORP          = ":"
-PIZQ                = "("
-PDER                = ")"
+COLON               = ":"
+LEFTP               = "("
+RIGHTP                = ")"
 ESC                 = (\\)
-CHAR_LITERAL        = ([:letter:] | [:digit:] | "_" | "$" | " " | "#" | {SEPARADORP}) | "\\"
+CHAR_LITERAL        = ([:letter:] | [:digit:] | "_" | "$" | " " | "#" | {COLON}) | "\\"
 COMENTARIO          = "#".*{SALTO}
 
 SALTO               = \n
-IDENTIFICADOR       = ([:letter:] | "_" )([:letter:] | "_" | [0-9])*
+ID       = ([:letter:] | "_" )([:letter:] | "_" | [0-9])*
 
 %state CADENA INDENTA CODIGO DEINDENTA 
 
@@ -122,37 +122,37 @@ IDENTIFICADOR       = ([:letter:] | "_" )([:letter:] | "_" | [0-9])*
 
 
 " "                   {}
-  {SALTO}       {yybegin(INDENTA); current=0; System.out.println("");}
-{REAL}                {System.out.print("REAL ("+yytext()+")");}
-{TRUE}                {System.out.print("BOOLEANO ("+yytext()+")");}
-{FALSE}               {System.out.print("BOOLEANO ("+yytext()+")");}
-{ENTERO}              {System.out.print("ENTERO ("+yytext()+")");}
-{POTENCIA}            {System.out.print("OPERADOR ("+yytext()+")");}
-{MAS}                 {System.out.print("OPERADOR ("+yytext()+")");}
-{MENOS}               {System.out.print("OPERADOR ("+yytext()+")");}
-{MULT}                {System.out.print("OPERADOR ("+yytext()+")");}
-{DIV}                 {System.out.print("OPERADOR ("+yytext()+")");}
-{MOD}                 {System.out.print("OPERADOR ("+yytext()+")");}
-{PISO}                {System.out.print("OPERADOR ("+yytext()+")");}
-{MENOR}               {System.out.print("OPERADOR ("+yytext()+")");}
-{MAYOR}               {System.out.print("OPERADOR ("+yytext()+")");}
-{IGUALIGUAL}          {System.out.print("OPERADOR ("+yytext()+")");}
-{IGUAL}               {System.out.print("OPERADOR ("+yytext()+")");}
-{MAIGUAL}             {System.out.print("OPERADOR ("+yytext()+")");}
-{MEIGUAL}             {System.out.print("OPERADOR ("+yytext()+")");}
-{DISTINTO}            {System.out.print("OPERADOR ("+yytext()+")");}
-{NOT}                 {System.out.print("RESERVADA ("+yytext()+")");}
-{AND}                 {System.out.print("RESERVADA ("+yytext()+")");}
-{OR}                  {System.out.print("RESERVADA ("+yytext()+")");}
-{IF}                  {System.out.print("RESERVADA ("+yytext()+")");}
-{WHILE}               {System.out.print("RESERVADA ("+yytext()+")");}
-{ELSE}                {System.out.print("RESERVADA ("+yytext()+")");} 
-{PRINT}               {System.out.print("RESERVADA ("+yytext()+")");} 
-{SEPARADORP}          {System.out.print("SEPARADOR ("+yytext()+")");}
-{PIZQ}                {System.out.print("PARENTESISIZQUIERDO ("+yytext()+")");}
-{PDER}                {System.out.print("PARENTESISDERECHO ("+yytext()+")");}
+{SALTO}               {yybegin(INDENTA); current=0; System.out.println("");}
+{REAL}                { yyparser.yylval = new ParserVal(Double.parseDouble(yytext())); return Parser.REAL;}
+{TRUE}                { yyparser.yylval = new ParserVal(Boolean.parseBoolean(yytext())); return Parser.BOOLEANO;}
+{FALSE}               { yyparser.yylval = new ParserVal(Boolean.parseBoolean(yytext())); return Parser.BOOLEANO;}
+{ENTERO}              { yyparser.yylval = new ParserVal(Integer.parseInt(yytext())); return Parser.ENTERO;}
+{BY}                  { yyparser.yylval = new ParserVal (yytext()); return Parser.BY;}
+{PLUS}                { yyparser.yylval = new ParserVal (yytext()); return Parser.PLUS;}
+{MINUS}               { yyparser.yylval = new ParserVal (yytext()); return Parser.MINUS;}
+{TIMES}               { yyparser.yylval = new ParserVal (yytext()); return Parser.TIMES;}
+{DIVIDE}              { yyparser.yylval = new ParserVal (yytext()); return Parser.DIVIDE;}
+{MODULO}              { yyparser.yylval = new ParserVal (yytext()); return Parser.MODULO;}
+{DASH}                { yyparser.yylval = new ParserVal (yytext()); return Parser.DASH;}
+{LESS}                { yyparser.yylval = new ParserVal (yytext()); return Parser.LESS;}
+{MORE}                { yyparser.yylval = new ParserVal (yytext()); return Parser.MORE;}
+{DEQ}                 { yyparser.yylval = new ParserVal (yytext()); return Parser.DEQ;}
+{EQUAL}               { yyparser.yylval = new ParserVal (yytext()); return Parser.EQUAL;}
+{GEQ}                 { yyparser.yylval = new ParserVal (yytext()); return Parser.GEQ;}
+{LEQ}                 { yyparser.yylval = new ParserVal (yytext()); return Parser.LEQ;}
+{DIFF}                { yyparser.yylval = new ParserVal (yytext()); return Parser.DIFF;}
+{NOT}                 { yyparser.yylval = new ParserVal (yytext()); return Parser.NOT;}
+{AND}                 { yyparser.yylval = new ParserVal (yytext()); return Parser.AND;}
+{OR}                  { yyparser.yylval = new ParserVal (yytext()); return Parser.OR;}
+{IF}                  { yyparser.yylval = new ParserVal (yytext()); return Parser.IF;}
+{WHILE}               { yyparser.yylval = new ParserVal (yytext()); return Parser.WHILE;}
+{ELSE}                { yyparser.yylval = new ParserVal (yytext()); return Parser.ELSE;}
+{PRINT}               { yyparser.yylval = new ParserVal (yytext()); return Parser.PRINT;}
+{COLON}               { yyparser.yylval = new ParserVal (yytext()); return Parser.COLON;}
+{LEFTP}               { yyparser.yylval = new ParserVal (yytext()); return Parser.LEFTP;}
+{RIGHTP}              { yyparser.yylval = new ParserVal (yytext()); return Parser.RIGHTP;}
 {SALTO}               {yybegin(INDENTA); System.out.print("SALTORESERVADA ("+yytext()+")");}
-{IDENTIFICADOR}       {System.out.print("IDENTIFICADOR ("+yytext()+")");}
+{ID}                  { yyparser.yylval = new ParserVal (yytext()); return Parser.ID;}
 }
 <INDENTA>{
   {SALTO}                                 { current = 0;}
