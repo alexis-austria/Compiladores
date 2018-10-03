@@ -105,7 +105,7 @@ ID       = ([:letter:] | "_" )([:letter:] | "_" | [0-9])*
 <CADENA>{
   {CHAR_LITERAL}*\"     {yybegin(CODIGO);
                                          System.out.print("");}
-  {SALTO}       { System.out.print("Cadena mal construida, linea " + (yyline+1) ); System.exit(1);}
+  {SALTO}         { System.out.print("Cadena mal construida, linea " + (yyline+1) ); System.exit(1);}
 }
 
 <DEINDENTA>{
@@ -171,7 +171,7 @@ ID       = ([:letter:] | "_" )([:letter:] | "_" | [0-9])*
 <<EOF>>                                   { this.analiza(0);
               if(numDeindenta > 0){
                 numDeindenta--;
-                System.out.print("SALTODEIDENTA ("+numDeindenta+")");
+                //System.out.print("SALTODEIDENTA ("+numDeindenta+")");
               }else{
                     }
             }
