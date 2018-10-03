@@ -10,6 +10,19 @@ import java.util.*;
 %line
 
 %{
+  
+    private Parser yyparser;
+
+
+   /** Nuevo constructor
+    * @param FileReader r
+    * @param parser parser - parser
+    */
+    public Flexer(java.io.Reader r, Parser parser){
+         this(r);
+         yyparser = parser;
+    }
+
     Stack<Integer> indentaciones = new Stack<Integer>();
     Integer current = 0;
     String cadena = "";
