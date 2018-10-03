@@ -171,6 +171,7 @@ ID       = ([:letter:] | "_" )([:letter:] | "_" | [0-9])*
 <<EOF>>                                   { this.analiza(0);
               if(numDeindenta > 0){
                 numDeindenta--;
+                return Parser.DEINDENTA;
                 //System.out.print("SALTODEIDENTA ("+numDeindenta+")");
               }else{
                     }
