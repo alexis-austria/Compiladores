@@ -122,7 +122,7 @@ atom: ID
     ;
 %%
 
-private Letras alexico;
+private Flexer alexico;
 
 // Regresar átomos
 private int yylex() {
@@ -143,7 +143,7 @@ public void yyerror (String error){
 }
 
 public Parser(Reader r){
-  alexico = new Letras(r,this);
+  alexico = new Flexer(r,this);
 }
 
 public static void main(String args[]){
