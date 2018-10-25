@@ -4,6 +4,12 @@ import ast.patron.compuesto.*;
 public interface Visitor
 {
     public void visit(IntHoja n);
+    public void visit(BooleanoHoja b);
+    public void visit(RealHoja f);
+    public void visit(CadenaHoja s);
+    public void visit(IdentificadorHoja s); 
+    public void visit(Nodo n);
+    public void visit(IntHoja n);
     public void visit(Nodo n);
     public void visit(NodoStmt n);
     public void visit(NodoSimpStmt n);
