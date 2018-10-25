@@ -10,9 +10,9 @@ import java.io.*;
 
 %%
 start:
-     | expr NEWLINE start {System.out.println("[OK]");} {System.out.printf("[OK] %d\n", $1);}
-     | term NEWLINE start {System.out.println("[OK]");} {System.out.printf("[OK] %d\n", $1);}
-     | factor NEWLINE start {System.out.println("[OK]");} {System.out.printf("[OK] %d\n", $1);}
+     | expr NEWLINE start {System.out.printf("[OK] %d\n", $1);}
+     | term NEWLINE start {System.out.printf("[OK] %d\n", $1);}
+     | factor NEWLINE start {System.out.printf("[OK] %d\n", $1);}
 
 expr:	term	 {dump_stacks(stateptr);}
 		|expr PLUS term	{dump_stacks(stateptr);} {$$= $1 + $3;}

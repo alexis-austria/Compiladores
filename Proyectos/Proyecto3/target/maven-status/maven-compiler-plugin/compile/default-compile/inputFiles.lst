@@ -1,0 +1,11 @@
+/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/java/ast/patron/compuesto/Compuesto.java
+/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/java/ast/patron/compuesto/Hoja.java
+/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/java/ast/patron/compuesto/Hijos.java
+/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/target/generated-sources/jflex/ast/Flexer.java
+/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/java/ast/patron/visitante/VisitorPrint.java
+/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/java/ast/patron/compuesto/IntHoja.java
+/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/java/ast/patron/compuesto/Variable.java
+/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/java/ast/patron/compuesto/Nodo.java
+/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/java/ast/Compilador.java
+/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/target/generated-sources/jflex/asintactico/Parser.java
+/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/java/ast/patron/visitante/Visitor.java
