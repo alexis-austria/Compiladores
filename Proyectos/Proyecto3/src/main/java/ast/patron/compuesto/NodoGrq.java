@@ -4,7 +4,7 @@ import ast.patron.visitante.*;
 Public class NodoGrq extends compuesto{
 
     Public NodoGrq(Nodo l, Nodo r){
-        this.agregaHijoPrint(l);
+        this.agregaHijoPrincipio(l);
         this.agregaHijoFinal(r);
     }
 
