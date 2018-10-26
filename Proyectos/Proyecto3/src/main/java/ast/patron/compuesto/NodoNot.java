@@ -1,11 +1,11 @@
 package ast.patron.compuesto;
 import ast.patron.visitante.*;
 
-Public class NodoNot extends compuesto{
+Public class NodoPrint extends compuesto{
 
-    Public NodoNot(Nodo l, Nodo r){
+    Public NodoPrint(Nodo l){
         this.agregaHijoPrincipio(l);
-        this.agregaHijoFinal(r);
+        //this.agregaHijoFinal(null);
     }
 
     public void accept(Visitor v){
@@ -13,3 +13,4 @@ Public class NodoNot extends compuesto{
     }
 
 }
+
