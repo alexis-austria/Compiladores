@@ -12,10 +12,17 @@ import java.io.*;
 
 
 %%
-fileinput:   {System.out.println("[OK]");}
-         | SALTO fileinput {System.out.println("[OK]");}
-         | stmt fileinput {System.out.println("[OK]");}
+fileinput: aux7 {System.out.println("[OK]");}
+         | aux8 {System.out.println("[OK]");}
          ;
+
+aux7: SALTO aux7
+    |
+    ;
+
+aux8: stmt aux8
+    |
+    ;
 
 stmt: simplestmt
     | compoundstmt

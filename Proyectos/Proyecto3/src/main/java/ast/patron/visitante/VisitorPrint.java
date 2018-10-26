@@ -14,51 +14,118 @@ public class VisitorPrint implements Visitor
 
     }
 
-    public void visit(NodoStmt n) {
-
+    public void visit(NodoAnd n){
+        System.out.println("and");
+        System.out.print("(");
+        n.getPrimerHijo().accept(this);
+        System.out.print(")");
+        System.out.print("(");
+        n.getUltimoHijo().accept(this);
+        System.out.println(")");
     }
 
-    public void visit(NodoSimpStmt n) {
-
+    public void visit(NodoDiff n){
+        System.out.println("!=");
+        System.out.print("(");
+        n.getPrimerHijo().accept(this);
+        System.out.print(")");
+        System.out.print("(");
+        n.getUltimoHijo().accept(this);
+        System.out.println(")");
     }
 
-    public void visit(NodoCompStmt n) {
-
+    public void visit(NodoDiv n){
+        System.out.println("/");
+        System.out.print("(");
+        n.getPrimerHijo().accept(this);
+        System.out.print(")");
+        System.out.print("(");
+        n.getUltimoHijo().accept(this);
+        System.out.println(")");
     }
 
-    public void visit(NodoIfStmt n) {
-
+    public void visit(NodoDoubleEq n){
+        System.out.println("==");
+        System.out.print("(");
+        n.getPrimerHijo().accept(this);
+        System.out.print(")");
+        System.out.print("(");
+        n.getUltimoHijo().accept(this);
+        System.out.println(")");
     }
 
-    public void visit(NodoWhStmt n) {
-
+    public void visit(NodoDoubleP n){
+        System.out.println(":");
+        System.out.print("(");
+        n.getPrimerHijo().accept(this);
+        System.out.print(")");
+        System.out.print("(");
+        n.getUltimoHijo().accept(this);
+        System.out.println(")");
     }
 
-    public void visit(NodoSuite n) {
-
+    public void visit(NodoElse n){
+        System.out.println("else");
+        System.out.print("(");
+        n.getPrimerHijo().accept(this);
+        System.out.print(")");
+        System.out.print("(");
+        n.getUltimoHijo().accept(this);
+        System.out.println(")");
     }
 
-    public void visit(NodoAuxStmt n) {
-
+    public void visit(NodoEq n){
+        System.out.println("=");
+        System.out.print("(");
+        n.getPrimerHijo().accept(this);
+        System.out.print(")");
+        System.out.print("(");
+        n.getUltimoHijo().accept(this);
+        System.out.println(")");
     }
 
-    public void visit(NodoSmallStmt n) {
-
+    public void visit(NodoIf n){
+        System.out.println("If");
+        LinkedList<Nodo> hijos = n.hijos.getAll();
+        System.out.print("Condicion: ");
+        hijos.get(0).accept(this);
+        System.out.print("Then: ");
+        hijos.get(1).accept(this);
+        if (hijos.size() == 3) {
+            System.out.print("Else: ");
+            hijos.get(2).accept(this);
+        }
     }
 
-    public void visit(NodoExprStmt n) {
-
+    public void visit(NodoIntDiv n){
+        System.out.println("//");
+        System.out.print("(");
+        n.getPrimerHijo().accept(this);
+        System.out.print(")");
+        System.out.print("(");
+        n.getUltimoHijo().accept(this);
+        System.out.println(")");
     }
 
-    public void visit(NodoPrintStmt n) {
-
+    public void visit(NodoResta n){
+        System.out.println("-");
+        System.out.print("(");
+        n.getPrimerHijo().accept(this);
+        System.out.print(")");
+        System.out.print("(");
+        n.getUltimoHijo().accept(this);
+        System.out.println(")");
     }
 
-    public void visit(NodoTest n) {
-
+    public void visit(NodoSuma n){
+        System.out.println("+");
+        System.out.print("(");
+        n.getPrimerHijo().accept(this);
+        System.out.print(")");
+        System.out.print("(");
+        n.getUltimoHijo().accept(this);
+        System.out.println(")");
     }
 
-    public void visit(NodoOrTest n) {
-
-    }
+    
 }

@@ -5,16 +5,15 @@ public interface Visitor
 {
     public void visit(IntHoja n);
     public void visit(Nodo n);
-    public void visit(NodoStmt n);
-    public void visit(NodoSimpStmt n);
-    public void visit(NodoCompStmt n);
-    public void visit(NodoIfStmt n);
-    public void visit(NodoWhStmt n);
-    public void visit(NodoSuite n);
-    public void visit(NodoAuxStmt n);
-    public void visit(NodoSmallStmt n);
-    public void visit(NodoExprStmt n);
-    public void visit(NodoPrintStmt n);
-    public void visit(NodoTest n);
-    public void visit(NodoOrTest n);
+    public void visit(NodoAnd n);
+    public void visit(NodoDiff n);
+    public void visit(NodoDiv n);
+    public void visit(NodoDoubleEq n);
+    public void visit(NodoDoubleP n);
+    public void visit(NodoElse n);
+    public void visit(NodoEq n);
+    public void visit(NodoIf n);
+    public void visit(NodoIntDIv n);
+    public void visit(NodoResta n);
+    public void visit(NodoSuma n);
 }

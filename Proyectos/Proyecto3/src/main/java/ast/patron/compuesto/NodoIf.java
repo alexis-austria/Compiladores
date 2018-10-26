@@ -1,17 +1,17 @@
 package ast.patron.compuesto;
 import ast.patron.visitante.*;
 
-public class NodoStmt extends Compuesto
+public class NodoIf extends Compuesto
 {
-    public NodoStmt(){
-	   hijos = new Hijos();
+    public NodoIf(){
+	   super();
     }
 
-    public NodoStmt(Hijos h){
+    public NodoIf(Hijos h){
        hijos = h;
     }
 
-    public NodoStmt(Nodo l){
+    public NodoTest(Nodo l){
        hijos = new Hijos(l);
     }
 
