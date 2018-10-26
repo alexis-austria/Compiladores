@@ -1,9 +1,9 @@
 package ast.patron.compuesto;
 import ast.patron.visitante.*;
 
-Public class NodoPrint extends compuesto{
+public class NodoPrint extends Compuesto{
 
-    Public NodoPrint(Nodo l){
+    public NodoPrint(Nodo l){
         this.agregaHijoPrincipio(l);
         //this.agregaHijoFinal(null);
     }

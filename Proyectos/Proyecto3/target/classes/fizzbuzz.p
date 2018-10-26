@@ -1,4 +1,3 @@
-# FizzBuzz
 indice = 1
 while indice < 100:
    otro = True
@@ -14,3 +13,4 @@ while indice < 100:
       print indice
 
    indice = indice + 1
+

@@ -1,9 +1,9 @@
 package ast.patron.compuesto;
 import ast.patron.visitante.*;
 
-Public class NodoOr extends compuesto{
+public class NodoOr extends Compuesto{
 
-    Public NodoOr(Nodo l, Nodo r){
+    public NodoOr(Nodo l, Nodo r){
         this.agregaHijoPrincipio(l);
         this.agregaHijoFinal(r);
     }

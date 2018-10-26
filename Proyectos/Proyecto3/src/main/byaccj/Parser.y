@@ -23,8 +23,8 @@ input:      {raíz = $$; System.out.println("Reconocimiento Exitoso");}
 
 /*    aux0: (SALTO | stmt)+ */
 aux0: SALTO
-    | stmt {{$$ = new NodoStmts($1);}
-    | aux0 SALTO {$$ = $1}
+    | stmt {$$ = new NodoStmts($1);}
+    | aux0 SALTO {$$ = $1;}
     | aux0 stmt {$1.agregaHijoFinal($2); $$ = $1;}
 ;
 
@@ -63,7 +63,7 @@ simple_stmt: small_stmt SALTO {$$ = $1;}
 
 /* small_stmt: expr_stmt | print_stmt  */
 small_stmt: expr_stmt {$$ = $1;}
-          | print_stmt {$$ = $1}
+          | print_stmt {$$ = $1;}
 ;
 
 /* expr_stmt: test ['=' test] */
@@ -84,7 +84,7 @@ or_test: and_test {$$ = $1;}
        | aux2 and_test {$$ = $1; $$.agregaHijoFinal($2);}
 ;
 /*    aux2: (and_test 'or')+  */
-aux2: and_test OR {$$ = new NodoOR($1,null)}
+aux2: and_test OR {$$ = new NodoOr($1,null);}
     | aux2 and_test OR {$$ = $1; $3.agregaHijoPrincipio($2); $$.agregaHijoFinal($3);}
 ;
 
@@ -128,8 +128,8 @@ expr: term {$$ = $1;}
 ;
 aux8: term MAS {$$ = new NodoSuma($1,null);}
     | term MENOS {$$ = new NodoResta($1,null);}
-    | aux8 term MAS {$1.agregaHijoFinal($2);  $$ = new AddNodo($1,null);}
-    | aux8 term MENOS {$1.agregaHijoFinal($2); $$ = new DifNodo($1,null);}
+    | aux8 term MAS {$1.agregaHijoFinal($2);  $$ = new NodoSuma($1,null);}
+    | aux8 term MENOS {$1.agregaHijoFinal($2); $$ = new NodoResta($1,null);}
 ;
 
 /*   term: (factor ('*'|'/'|'%'|'//'))* factor   */
@@ -191,4 +191,3 @@ public Parser(Reader r) {
     lexer = new Flexer(r, this);
     yydebug = true;
 }
-

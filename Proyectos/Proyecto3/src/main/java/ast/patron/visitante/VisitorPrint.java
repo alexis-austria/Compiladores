@@ -27,10 +27,6 @@ public class VisitorPrint implements Visitor
     }
 
     //Nodos
-    public void visit(Nodo n){
-	System.out.print("Nodo Genérico");
-    }
-
     public void visit(NodoGr n){
         System.out.println("GR");
         System.out.print("(");
@@ -258,10 +254,13 @@ public class VisitorPrint implements Visitor
     public void visit(Compuesto n){
         int i = 0;
         while (i < n.getHijos().size()) {
-            Nodo h = n.getHijos().get(i);
+            Nodo h = n.getHijos().getAll().get(i);
             System.out.print("(");
             h.accept(this);
             System.out.println(")");
         }
+    }
+
+    public void visit(Nodo n){
     }
 }

@@ -1,9 +1,9 @@
 package ast.patron.compuesto;
 import ast.patron.visitante.*;
 
-Public class NodoLeq extends compuesto{
+public class NodoLeq extends Compuesto{
 
-    Public NodoLeq(Nodo l, Nodo r){
+    public NodoLeq(Nodo l, Nodo r){
         this.agregaHijoPrincipio(l);
         this.agregaHijoFinal(r);
     }

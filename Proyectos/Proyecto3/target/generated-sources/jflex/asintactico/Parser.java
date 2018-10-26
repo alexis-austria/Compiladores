@@ -619,15 +619,15 @@ case 2:
 break;
 case 4:
 //#line 26 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{yyval = val_peek(0);}
+{yyval = new NodoStmts(val_peek(0));}
 break;
 case 5:
 //#line 27 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = val_peek(1);}
 break;
 case 6:
 //#line 28 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{val_peek(1).agregaHijoFinal(val_peek(0)); yyval = val_peek(1);}
 break;
 case 7:
 //#line 32 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
@@ -635,27 +635,27 @@ case 7:
 break;
 case 8:
 //#line 33 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = val_peek(0);}
 break;
 case 9:
 //#line 37 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = val_peek(0);}
 break;
 case 10:
 //#line 38 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = val_peek(0);}
 break;
 case 11:
 //#line 42 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = new NodoIf(); yyval.agregaHijoFinal(val_peek(5)); yyval.agregaHijoFinal(val_peek(3)); yyval.agregaHijoFinal(val_peek(0));}
 break;
 case 12:
 //#line 43 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = new NodoIf(); yyval.agregaHijoFinal(val_peek(2)); yyval.agregaHijoFinal(val_peek(0));}
 break;
 case 13:
 //#line 47 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = new NodoWhile(val_peek(2),val_peek(0));}
 break;
 case 14:
 //#line 51 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
@@ -667,11 +667,11 @@ case 15:
 break;
 case 16:
 //#line 56 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = new NodoStmts(val_peek(0));}
 break;
 case 17:
 //#line 57 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{val_peek(1).agregaHijoFinal(val_peek(0)); yyval = val_peek(1);}
 break;
 case 18:
 //#line 61 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
@@ -683,7 +683,7 @@ case 19:
 break;
 case 20:
 //#line 66 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = val_peek(0);}
 break;
 case 21:
 //#line 70 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
@@ -691,11 +691,11 @@ case 21:
 break;
 case 22:
 //#line 71 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = new NodoEq(val_peek(2),val_peek(0));}
 break;
 case 23:
 //#line 75 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = new NodoPrint(val_peek(0));}
 break;
 case 24:
 //#line 79 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
@@ -707,15 +707,15 @@ case 25:
 break;
 case 26:
 //#line 84 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = val_peek(1); yyval.agregaHijoFinal(val_peek(0));}
 break;
 case 27:
 //#line 87 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = new NodoOr(val_peek(1),null);}
 break;
 case 28:
 //#line 88 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = val_peek(2); val_peek(0).agregaHijoPrincipio(val_peek(1)); yyval.agregaHijoFinal(val_peek(0));}
 break;
 case 29:
 //#line 92 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
@@ -723,19 +723,19 @@ case 29:
 break;
 case 30:
 //#line 93 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = val_peek(1); yyval.agregaHijoFinal(val_peek(0));}
 break;
 case 31:
 //#line 97 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = new NodoAnd(val_peek(1),null);}
 break;
 case 32:
 //#line 98 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = val_peek(2); val_peek(0).agregaHijoPrincipio(val_peek(1)); yyval.agregaHijoFinal(val_peek(0));}
 break;
 case 33:
 //#line 102 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = new NodoNot(val_peek(0));}
 break;
 case 34:
 //#line 103 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
@@ -747,39 +747,39 @@ case 35:
 break;
 case 36:
 //#line 108 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = val_peek(1); yyval.agregaHijoFinal(val_peek(0));}
 break;
 case 37:
 //#line 112 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = val_peek(0); yyval.agregaHijoPrincipio(val_peek(1));}
 break;
 case 38:
 //#line 113 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = val_peek(2); val_peek(0).agregaHijoPrincipio(val_peek(1)); yyval.agregaHijoFinal(val_peek(0));}
 break;
 case 39:
 //#line 117 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = new NodoLe(null,null);}
 break;
 case 40:
 //#line 118 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = new NodoGr(null,null);}
 break;
 case 41:
 //#line 119 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = new NodoDoubleEq(null,null);}
 break;
 case 42:
 //#line 120 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = new NodoGrq(null,null);}
 break;
 case 43:
 //#line 121 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = new NodoLeq(null,null);}
 break;
 case 44:
 //#line 122 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = new NodoDiff(null,null);}
 break;
 case 45:
 //#line 126 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
@@ -787,23 +787,23 @@ case 45:
 break;
 case 46:
 //#line 127 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = val_peek(1); yyval.agregaHijoFinal(val_peek(0));}
 break;
 case 47:
 //#line 129 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = new NodoSuma(val_peek(1),null);}
 break;
 case 48:
 //#line 130 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = new NodoResta(val_peek(1),null);}
 break;
 case 49:
 //#line 131 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{val_peek(2).agregaHijoFinal(val_peek(1));  yyval = new NodoSuma(val_peek(2),null);}
 break;
 case 50:
 //#line 132 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{val_peek(2).agregaHijoFinal(val_peek(1)); yyval = new NodoResta(val_peek(2),null);}
 break;
 case 51:
 //#line 136 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
@@ -811,47 +811,47 @@ case 51:
 break;
 case 52:
 //#line 137 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = val_peek(1); yyval.agregaHijoFinal(val_peek(0));}
 break;
 case 53:
 //#line 139 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = new NodoPor(val_peek(1),null);}
 break;
 case 54:
 //#line 140 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = new NodoIntDiv(val_peek(1),null);}
 break;
 case 55:
 //#line 141 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = new NodoModulo(val_peek(1),null);}
 break;
 case 56:
 //#line 142 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = new NodoDiv(val_peek(1),null);}
 break;
 case 57:
 //#line 143 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{val_peek(2).agregaHijoFinal(val_peek(1)); yyval = new NodoPor(val_peek(2),null);}
 break;
 case 58:
 //#line 144 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{val_peek(2).agregaHijoFinal(val_peek(1)); yyval = new NodoIntDiv(val_peek(2),null);}
 break;
 case 59:
 //#line 145 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{val_peek(2).agregaHijoFinal(val_peek(1)); yyval = new NodoModulo(val_peek(2),null);}
 break;
 case 60:
 //#line 146 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{val_peek(2).agregaHijoFinal(val_peek(1));  yyval = new NodoDiv(val_peek(2),null);}
 break;
 case 61:
 //#line 149 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = new NodoSuma(null,val_peek(1));}
 break;
 case 62:
 //#line 150 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = new NodoResta(null,val_peek(1));}
 break;
 case 63:
 //#line 151 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
@@ -863,11 +863,11 @@ case 64:
 break;
 case 65:
 //#line 155 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = new NodoPotencia(val_peek(2),val_peek(0));}
 break;
 case 66:
 //#line 159 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = val_peek(0);}
 break;
 case 67:
 //#line 160 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
@@ -875,19 +875,19 @@ case 67:
 break;
 case 68:
 //#line 161 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = val_peek(0);}
 break;
 case 69:
 //#line 162 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = val_peek(0);}
 break;
 case 70:
 //#line 163 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = val_peek(0);}
 break;
 case 71:
 //#line 164 "/home/alexis/Documents/Compiladores/Compiladores/Proyectos/Proyecto3/src/main/byaccj/Parser.y"
-{}
+{yyval = val_peek(1);}
 break;
 //#line 824 "Parser.java"
 //########## END OF USER-SUPPLIED ACTIONS ##########

@@ -3,8 +3,8 @@ import ast.patron.visitante.*;
 
 public class IdentificadorHoja extends Hoja
 {
-    public IntHoja(String s){
-	name = s
+    public IdentificadorHoja(String s){
+	   name = s;
     }
 
     public void accept(Visitor v){

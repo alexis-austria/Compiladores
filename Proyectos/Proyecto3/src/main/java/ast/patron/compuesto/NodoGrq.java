@@ -1,9 +1,9 @@
 package ast.patron.compuesto;
 import ast.patron.visitante.*;
 
-Public class NodoGrq extends compuesto{
+public class NodoGrq extends Compuesto{
 
-    Public NodoGrq(Nodo l, Nodo r){
+    public NodoGrq(Nodo l, Nodo r){
         this.agregaHijoPrincipio(l);
         this.agregaHijoFinal(r);
     }
