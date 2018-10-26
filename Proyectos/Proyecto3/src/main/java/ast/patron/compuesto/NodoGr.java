@@ -1,7 +1,7 @@
 package ast.patron.compuesto;
 import ast.patron.visitante.*;
 
-Public NodoGr extends compuesto{
+Public class NodoGr extends compuesto{
 
     Public NodoGr(Nodo l, Nodo r){
         this.agregaHijoPrint(l);

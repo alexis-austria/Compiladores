@@ -1,7 +1,7 @@
 package ast.patron.compuesto;
 import ast.patron.visitante.*;
 
-Public NodoNot extends compuesto{
+Public class NodoNot extends compuesto{
 
     Public NodoNot(Nodo l, Nodo r){
         this.agregaHijoPrint(l);
