@@ -4,7 +4,7 @@ import ast.patron.visitante.*;
 Public class NodoLeq extends compuesto{
 
     Public NodoLeq(Nodo l, Nodo r){
-        this.agregaHijoPrint(l);
+        this.agregaHijoPrincipio(l);
         this.agregaHijoFinal(r);
     }
 
