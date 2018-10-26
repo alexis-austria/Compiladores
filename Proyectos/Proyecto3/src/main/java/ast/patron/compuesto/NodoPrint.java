@@ -4,7 +4,7 @@ import ast.patron.visitante.*;
 Public class NodoPrint extends compuesto{
 
     Public NodoPrint(Nodo l, Nodo r){
-        this.agregaHijoPrint(l);
+        this.agregaHijoPrincipio(l);
         this.agregaHijoFinal(r);
     }
 
