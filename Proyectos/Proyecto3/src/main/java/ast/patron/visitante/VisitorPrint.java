@@ -28,7 +28,7 @@ public class VisitorPrint implements Visitor
     
     //Nodos
     public void visit(Nodo n){
-
+	System.out.print("Nodo Genérico");
     }
     
     public void visit(NodoGr n){
