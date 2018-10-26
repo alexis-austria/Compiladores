@@ -4,7 +4,7 @@ import ast.patron.visitante.*;
 Public class NodoNot extends compuesto{
 
     Public NodoNot(Nodo l, Nodo r){
-        this.agregaHijoPrint(l);
+        this.agregaHijoPrincipio(l);
         this.agregaHijoFinal(r);
     }
 
