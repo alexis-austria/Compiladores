@@ -12,6 +12,7 @@ public interface Visitor
     public void visit(Nodo n);
     //Nodos
     public void visit(NodoGr n);
+    public void visit(Compuesto n);
     public void visit(NodoGrq n);
     public void visit(NodoLe n);
     public void visit(NodoLeq n);
@@ -32,5 +33,6 @@ public interface Visitor
     public void visit(NodoEq n);
     public void visit(NodoIntDiv n);
     public void visit(NodoResta n);
+    public void visit(NodoSuma n);
     public void visit(NodoStmts n);
 }
