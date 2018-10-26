@@ -4,7 +4,7 @@ import ast.patron.visitante.*;
 Public class NodoPotencia extends compuesto{
 
     Public NodoPotencia(Nodo l, Nodo r){
-        this.agregaHijoPrint(l);
+        this.agregaHijoPrincipio(l);
         this.agregaHijoFinal(r);
     }
 
