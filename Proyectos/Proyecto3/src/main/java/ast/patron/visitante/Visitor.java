@@ -15,7 +15,6 @@ public interface Visitor
     public void visit(NodoGrq n);
     public void visit(NodoLe n);
     public void visit(NodoLeq n);
-    public void visit(NodoMas n);
     public void visit(NodoModulo n);
     public void visit(NodoNot n);
     public void visit(NodoOr n);
@@ -23,16 +22,15 @@ public interface Visitor
     public void visit(NodoPotencia n);
     public void visit(NodoPrint n);
     public void visit(NodoWhile n);
-    public void visit(NodoStmt n);
-    public void visit(NodoSimpStmt n);
-    public void visit(NodoCompStmt n);
-    public void visit(NodoIfStmt n);
-    public void visit(NodoWhStmt n);
-    public void visit(NodoSuite n);
-    public void visit(NodoAuxStmt n);
-    public void visit(NodoSmallStmt n);
-    public void visit(NodoExprStmt n);
-    public void visit(NodoPrintStmt n);
-    public void visit(NodoTest n);
-    public void visit(NodoOrTest n);
+    public void visit(NodoIf n);
+    public void visit(NodoAnd n);
+    public void visit(NodoDiff n);
+    public void visit(NodoDiv n);
+    public void visit(NodoDoubleEq n);
+    public void visit(NodoDoubleP n);
+    public void visit(NodoElse n);
+    public void visit(NodoEq n);
+    public void visit(NodoIntDiv n);
+    public void visit(NodoResta n);
+    public void visit(NodoStmts n);
 }

@@ -11,10 +11,6 @@ public class NodoIf extends Compuesto
        hijos = h;
     }
 
-    public NodoTest(Nodo l){
-       hijos = new Hijos(l);
-    }
-
     public void accept(Visitor v){
      	v.visit(this);
     }
