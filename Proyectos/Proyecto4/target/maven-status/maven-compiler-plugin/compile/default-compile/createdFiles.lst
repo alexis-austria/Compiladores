@@ -22,6 +22,7 @@ ast/patron/compuesto/NodoLeq.class
 ast/patron/compuesto/NodoPrint.class
 ast/patron/compuesto/CadenaHoja.class
 ast/patron/compuesto/NodoResta.class
+ast/patron/visitante/SistemaTipos.class
 ast/patron/compuesto/NodoGr.class
 ast/patron/compuesto/Hijos.class
 ast/patron/compuesto/NodoSuma.class

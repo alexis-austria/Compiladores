@@ -27,6 +27,11 @@ public class SistemaTipos {
                 {ERROR, BOOLEANO, BOOLEANO, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
 
+    //Funcion para calcular si los tipos son validos en la operacion diff
+    public int verificadorDiff(int i, int j) {
+        return diff[i][j];
+    }
+
     //Tabla para definir si los tipos son compatibles en el divInt.
     //El primer renglon y la primera columna representan los booleanos.
     //El segundo renglon y la segunda columna representan los Enteros.
@@ -37,6 +42,12 @@ public class SistemaTipos {
                 {ERROR, ENTERO, ENTERO, ERROR},
                 {ERROR, ENTERO, ENTERO, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
+
+    //Funcion para calcular si los tipos son validos en la operacion divInt
+    public int verificadorDivInt(int i, int j) {
+        return divInt[i][j];
+    }
+    
     
     //Tabla para definir si los tipos son compatibles en el doubleEq.
     //El primer renglon y la primera columna representan los booleanos.
@@ -49,6 +60,11 @@ public class SistemaTipos {
                 {ERROR, BOOLEANO, BOOLEANO, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
 
+    //Funcion para calcular si los tipos son validos en la operacion doubleEq
+    public int verificadorDoubleEq(int i, int j) {
+        return doubleEq[i][j];
+    }
+
     //Tabla para definir si los tipos son compatibles en el gr.
     //El primer renglon y la primera columna representan los booleanos.
     //El segundo renglon y la segunda columna representan los Enteros.
@@ -60,6 +76,11 @@ public class SistemaTipos {
                 {ERROR, BOOLEANO, BOOLEANO, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
 
+    //Funcion para calcular si los tipos son validos en la operacion gr
+    public int verificadorGr(int i, int j) {
+        return gr[i][j];
+    }
+
     //Tabla para definir si los tipos son compatibles en el grq.
     //El primer renglon y la primera columna representan los booleanos.
     //El segundo renglon y la segunda columna representan los Enteros.
@@ -70,9 +91,19 @@ public class SistemaTipos {
                 {ERROR, BOOLEANO, BOOLEANO, ERROR},
                 {ERROR, BOOLEANO, BOOLEANO, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
+            
+    //Funcion para calcular si los tipos son validos en la operacion grq
+    public int verificadorGrq(int i, int j) {
+        return grq[i][j];
+    }
 
     //En el if solo se tomaran en cuenta los booleanos.
-    int[][] if = new int[]{BOOLEANO,ERROR,ERROR,ERROR}
+    int[] iff = new int[]{BOOLEANO,ERROR,ERROR,ERROR};
+
+    //Funcion para calcular si los tipos son validos en la operacion if
+    public int verificadorIf(int i) {
+        return iff [i];
+    }
 
     //Tabla para definir si los tipos son compatibles en el div.
     //El primer renglon y la primera columna representan los booleanos.
@@ -84,6 +115,11 @@ public class SistemaTipos {
                 {ERROR, REAL, REAL, ERROR},
                 {ERROR, REAL, REAL, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
+
+    //Funcion para calcular si los tipos son validos en la operacion div
+    public int verificadorDiv(int i, int j) {
+        return div[i][j];
+    }
     
     //Tabla para definir si los tipos son compatibles en el le.
     //El primer renglon y la primera columna representan los booleanos.
@@ -96,6 +132,11 @@ public class SistemaTipos {
                 {ERROR, BOOLEANO, BOOLEANO, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
 
+    //Funcion para calcular si los tipos son validos en la operacion le
+    public int verificadorLe(int i, int j) {
+        return le[i][j];
+    }
+
     //Tabla para definir si los tipos son compatibles en el grq.
     //El primer renglon y la primera columna representan los booleanos.
     //El segundo renglon y la segunda columna representan los Enteros.
@@ -106,6 +147,11 @@ public class SistemaTipos {
                 {ERROR, BOOLEANO, BOOLEANO, ERROR},
                 {ERROR, BOOLEANO, BOOLEANO, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
+
+    //Funcion para calcular si los tipos son validos en la operacion leq
+    public int verificadorLeq(int i, int j) {
+        return leq[i][j];
+    }
 
     //Tabla para definir si los tipos son compatibles en el modulo.
     //El primer renglon y la primera columna representan los booleanos.
@@ -118,8 +164,18 @@ public class SistemaTipos {
                 {ERROR, REAL, REAL, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
 
+    //Funcion para calcular si los tipos son validos en la operacion Modulo
+    public int verificadorModulo(int i, int j) {
+        return modulo[i][j];
+    }
+
     //En el not se regresara un booleano para todos. 
-    int[][] not = new int[]{0,0,0,0}
+    int[] not = new int[]{BOOLEANO,ENTERO,REAL,ERROR};
+
+    //Funcion para calcular si los tipos son validos en la operacion not
+    public int verificadorNot(int i) {
+        return not[i];
+    }
 
     //Tabla para definir si los tipos son compatibles en el por.
     //El primer renglon y la primera columna representan los booleanos.
@@ -132,6 +188,11 @@ public class SistemaTipos {
                 {ERROR, REAL, REAL, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
 
+    //Funcion para calcular si los tipos son validos en la operacion por
+    public int verificadorPor(int i, int j) {
+        return por[i][j];
+    }
+
     //Tabla para definir si los tipos son compatibles en el potencia.
     //El primer renglon y la primera columna representan los booleanos.
     //El segundo renglon y la segunda columna representan los Enteros.
@@ -142,9 +203,12 @@ public class SistemaTipos {
                 {ERROR, ENTERO, REAL, ERROR},
                 {ERROR, REAL, REAL, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
+        
+    //Funcion para calcular si los tipos son validos en la operacion potencia
+    public int verificadorPotencia(int i, int j) {
+        return potencia[i][j];
+    }
 
-    //El print imprime lo que se le esta pasando.
-    int[][] not = new int[]{BOOLEANO,ENTERO,REAL,CADENA}
 
     //Tabla para definir si los tipos son compatibles en el resta.
     //El primer renglon y la primera columna representan los booleanos.
@@ -157,6 +221,11 @@ public class SistemaTipos {
                 {ERROR, REAL, REAL, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
 
+    //Funcion para calcular si los tipos son validos en la operacion resta
+    public int verificadorResta(int i, int j) {
+        return resta[i][j];
+    }
+
     //Tabla para definir si los tipos son compatibles en la suma.
     //El primer renglon y la primera columna representan los booleanos.
     //El segundo renglon y la segunda columna representan los Enteros.
@@ -167,19 +236,18 @@ public class SistemaTipos {
                 {ERROR, ENTERO, REAL, ERROR},
                 {ERROR, REAL, REAL, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
-
-    //Tabla para definir si los tipos son compatibles en el while.
-    //El primer renglon y la primera columna representan los booleanos.
-    //El segundo renglon y la segunda columna representan los Enteros.
-    //El tercer renglon y la tercera columna representan los reales. 
-    //El cuarto renglon y la cuarta columna representan las cadenas.
-    int[][] while = new int[][]{
-                {ERROR,ERROR,ERROR,ERROR},
-                {ERROR, ENTERO, REAL, ERROR},
-                {ERROR, REAL, REAL, ERROR},
-                {ERROR, ERROR, ERROR, ERROR}};
+    
+    //Funcion para calcular si los tipos son validos en la operacion suma
+    public int verificadorSuma(int i, int j) {
+        return suma[i][j];
+    }
 
     //El While solo se efectua con booleanos
-    int[][] while = new int[]{BOOLEANO,ERROR,ERROR,ERROR}
+    int[] whilee = new int[]{BOOLEANO,ERROR,ERROR,ERROR};
+
+    //Funcion para calcular si los tipos son validos en la operacion while
+    public int verificadorWhile(int i) {
+        return whilee[i];
+    }
 
 }
