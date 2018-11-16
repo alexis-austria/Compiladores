@@ -12,7 +12,7 @@ public interface Visitor
     public void visit(Nodo n);
     //Nodos
     public void visit(NodoGr n);
-    public void visit(Compuesto n);
+    public void visit(Compuesto n);//Pendiente
     public void visit(NodoGrq n);
     public void visit(NodoLe n);
     public void visit(NodoLeq n);

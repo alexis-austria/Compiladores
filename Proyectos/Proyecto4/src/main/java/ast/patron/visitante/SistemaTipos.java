@@ -6,6 +6,7 @@ import java.util.ArrayList;
 //Clase que servira para definir las reglas para cada operador.
 //Se definira con que tipos de  datos puede operar cada tipo mendiante matrices.
 public class SistemaTipos {
+    
     //Los booleanos se representan con 0,enteros con 1, reales con 2 y cadenas con 3.
     //Los errores los tomamos como -1.
     private static final int ERROR = -1; 
@@ -27,7 +28,7 @@ public class SistemaTipos {
                 {ERROR, BOOLEANO, BOOLEANO, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
 
-    //Funcion para calcular si los tipos son validos en la operacion diff
+    //Funcion para calcular la entrada en la matriz para la operacion diff.
     public int verificadorDiff(int i, int j) {
         return diff[i][j];
     }
@@ -43,7 +44,7 @@ public class SistemaTipos {
                 {ERROR, ENTERO, ENTERO, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
 
-    //Funcion para calcular si los tipos son validos en la operacion divInt
+    //Funcion para calcular la entrada en la matriz para la operacion divInt.
     public int verificadorDivInt(int i, int j) {
         return divInt[i][j];
     }
@@ -60,7 +61,7 @@ public class SistemaTipos {
                 {ERROR, BOOLEANO, BOOLEANO, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
 
-    //Funcion para calcular si los tipos son validos en la operacion doubleEq
+    //Funcion para calcular la entrada en la matriz para la operacion doubleEq.
     public int verificadorDoubleEq(int i, int j) {
         return doubleEq[i][j];
     }
@@ -76,7 +77,7 @@ public class SistemaTipos {
                 {ERROR, BOOLEANO, BOOLEANO, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
 
-    //Funcion para calcular si los tipos son validos en la operacion gr
+    //Funcion para calcular la entrada en la matriz para la operacion gr.
     public int verificadorGr(int i, int j) {
         return gr[i][j];
     }
@@ -92,7 +93,7 @@ public class SistemaTipos {
                 {ERROR, BOOLEANO, BOOLEANO, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
             
-    //Funcion para calcular si los tipos son validos en la operacion grq
+    //Funcion para calcular la entrada en la matriz para la operacion grq.
     public int verificadorGrq(int i, int j) {
         return grq[i][j];
     }
@@ -100,7 +101,7 @@ public class SistemaTipos {
     //En el if solo se tomaran en cuenta los booleanos.
     int[] iff = new int[]{BOOLEANO,ERROR,ERROR,ERROR};
 
-    //Funcion para calcular si los tipos son validos en la operacion if
+    //Funcion para calcular la entrada en la matriz para la operacion if.
     public int verificadorIf(int i) {
         return iff [i];
     }
@@ -116,7 +117,7 @@ public class SistemaTipos {
                 {ERROR, REAL, REAL, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
 
-    //Funcion para calcular si los tipos son validos en la operacion div
+    //Funcion para calcular la entrada en la matriz para la operacion div.
     public int verificadorDiv(int i, int j) {
         return div[i][j];
     }
@@ -132,7 +133,7 @@ public class SistemaTipos {
                 {ERROR, BOOLEANO, BOOLEANO, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
 
-    //Funcion para calcular si los tipos son validos en la operacion le
+    //Funcion para calcular la entrada en la matriz para la operacion le.
     public int verificadorLe(int i, int j) {
         return le[i][j];
     }
@@ -148,7 +149,7 @@ public class SistemaTipos {
                 {ERROR, BOOLEANO, BOOLEANO, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
 
-    //Funcion para calcular si los tipos son validos en la operacion leq
+    //Funcion para calcular la entrada en la matriz para la operacion leq.
     public int verificadorLeq(int i, int j) {
         return leq[i][j];
     }
@@ -164,7 +165,7 @@ public class SistemaTipos {
                 {ERROR, REAL, REAL, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
 
-    //Funcion para calcular si los tipos son validos en la operacion Modulo
+    //Funcion para calcular la entrada en la matriz para la operacion modulo.
     public int verificadorModulo(int i, int j) {
         return modulo[i][j];
     }
@@ -172,7 +173,7 @@ public class SistemaTipos {
     //En el not se regresara un booleano para todos. 
     int[] not = new int[]{BOOLEANO,ENTERO,REAL,ERROR};
 
-    //Funcion para calcular si los tipos son validos en la operacion not
+    //Funcion para calcular la entrada en la matriz para la operacion not.
     public int verificadorNot(int i) {
         return not[i];
     }
@@ -188,7 +189,7 @@ public class SistemaTipos {
                 {ERROR, REAL, REAL, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
 
-    //Funcion para calcular si los tipos son validos en la operacion por
+    //Funcion para calcular la entrada en la matriz para la operacion por.
     public int verificadorPor(int i, int j) {
         return por[i][j];
     }
@@ -204,7 +205,7 @@ public class SistemaTipos {
                 {ERROR, REAL, REAL, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
         
-    //Funcion para calcular si los tipos son validos en la operacion potencia
+    //Funcion para calcular la entrada en la matriz para la operacion potencia.
     public int verificadorPotencia(int i, int j) {
         return potencia[i][j];
     }
@@ -221,7 +222,7 @@ public class SistemaTipos {
                 {ERROR, REAL, REAL, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
 
-    //Funcion para calcular si los tipos son validos en la operacion resta
+    //Funcion para calcular la entrada en la matriz para la operacion resta.
     public int verificadorResta(int i, int j) {
         return resta[i][j];
     }
@@ -237,7 +238,7 @@ public class SistemaTipos {
                 {ERROR, REAL, REAL, ERROR},
                 {ERROR, ERROR, ERROR, ERROR}};
     
-    //Funcion para calcular si los tipos son validos en la operacion suma
+    //Funcion para calcular la entrada en la matriz para la operacion suma.
     public int verificadorSuma(int i, int j) {
         return suma[i][j];
     }
@@ -245,7 +246,7 @@ public class SistemaTipos {
     //El While solo se efectua con booleanos
     int[] whilee = new int[]{BOOLEANO,ERROR,ERROR,ERROR};
 
-    //Funcion para calcular si los tipos son validos en la operacion while
+    //Funcion para calcular la entrada en la matriz para la operacion while.
     public int verificadorWhile(int i) {
         return whilee[i];
     }
