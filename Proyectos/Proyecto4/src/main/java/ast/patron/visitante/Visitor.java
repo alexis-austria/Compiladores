@@ -3,38 +3,36 @@ import ast.patron.compuesto.*;
 
 public interface Visitor
 {
-    public int visit(MenorNodo n);
-    public int visit(MayorNodo n);
-    public int visit(MenorIgualNodo n);
-    public int visit(MayorIgualNodo n);
-    public int visit(IgualIgualNodo n);
-    public int visit(IfNodo n);
-    public int visit(DosPuntosNodo n);
-    public int visit(ElseNodo n);
-    public int visit(MultNodo n);
-    public int visit(DivENodo n);
-    public int visit(DivNodo n);
-    public int visit(ModNodo n);
-    public int visit(AndNodo n);
-    public int visit(PotNodo n);
-    public int visit(AddNodo n);  //
-    public int visit(OrNodo n);
-    public int visit(NodoStmts n);
-    public int visit(NotNodo n);
-    public int visit(InNodo n);
-    public int visit(MasIgualNodo n);
-    public int visit(FloatHoja n);
-    public int visit(BoolHoja n);
-    public int visit(PrintnNodo n);
-    public int visit(WhileNodo n);
-    public int visit(StringHoja n);
-    public int visit(DiferenteNodo n);    
-    public int visit(Compuesto n);
-    public int visit(AsigNodo n);
-    public int visit(DifNodo n);  //
-    public int visit(IdentifierHoja n);
-    public int visit(Hoja n);
-    public int visit(Nodo n);
-    public int visit(IntHoja n);
-    public int visit(NodoBinario n);
+    //Hojas
+    public void visit(IntHoja n);
+    public void visit(BooleanoHoja b);
+    public void visit(RealHoja f);
+    public void visit(CadenaHoja s);
+    public void visit(IdentificadorHoja s);
+    public void visit(Nodo n);
+    //Nodos
+    public void visit(NodoGr n);
+    public void visit(Compuesto n);//Pendiente
+    public void visit(NodoGrq n);
+    public void visit(NodoLe n);
+    public void visit(NodoLeq n);
+    public void visit(NodoModulo n);
+    public void visit(NodoNot n);
+    public void visit(NodoOr n);//Pendiente
+    public void visit(NodoPor n);
+    public void visit(NodoPotencia n);
+    public void visit(NodoPrint n);//Pendiente
+    public void visit(NodoWhile n);
+    public void visit(NodoIf n);
+    public void visit(NodoAnd n);//Pendiente
+    public void visit(NodoDiff n);
+    public void visit(NodoDiv n);
+    public void visit(NodoDoubleEq n);
+    public void visit(NodoDoubleP n);//Pendiente
+    public void visit(NodoElse n);//Pendiente
+    public void visit(NodoEq n);//Pendiente
+    public void visit(NodoIntDiv n);
+    public void visit(NodoResta n);
+    public void visit(NodoSuma n);
+    public void visit(NodoStmts n);
 }

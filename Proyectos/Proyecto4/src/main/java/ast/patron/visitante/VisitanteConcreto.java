@@ -6,7 +6,7 @@ import java.util.Hashtable;
 import java.util.LinkedList;
 
 
-public abstract class VisitanteConcreto implements Visitor {
+public class VisitanteConcreto implements Visitor {
 
     //Se implementara la tabla de simbolos mediante un Hashtable para poder acceder
     //con el nombre con el que es llamado el identificador en el codigo ademas de poder almacenar
@@ -312,6 +312,35 @@ public abstract class VisitanteConcreto implements Visitor {
         }
     }
 
+    public void visit(IdentificadorHoja n){
+        if( !tablaDeSimbolos.containsKey(n.getNombre())){
+            System.err.println("\n\nLa variable " + n.getNombre() + " no tiene un valor definido");
+            //System.out.println(tablaSim.keySet());
+            
+            System.exit(0);
+        }else{
+            n.setTipo(tablaDeSimbolos.get(n.getNombre()));
+        }
+    }
+
+    public void visit(NodoEq n){
+        n.getUltimoHijo().accept(this);
+        String name = n.getPrimerHijo().getNombre();  
+        // Verifica en la TS si existe
+        if (tablaDeSimbolos.containsKey(name)){            
+            // Verifica si el tipo que tenía es igual al nuevo
+            if(tablaDeSimbolos.get(name) != n.getUltimoHijo().getType()){
+                System.out.println("El nuevo tipo no es del mismo tipo al antiguo");
+            }else{
+                n.setTipo(tablaDeSimbolos.get(name));
+            }
+        }else{  
+            tablaDeSimbolos.put(name, n.getUltimoHijo().getType());
+        }
+        
+        n.getPrimerHijo().accept(this);
+    }
+
     public void visit(IntHoja n) {
         n.setTipo(ENTERO);
     }
@@ -326,5 +355,26 @@ public abstract class VisitanteConcreto implements Visitor {
 
      public void visit(RealHoja n) {
         n.setTipo(REAL);
+    }
+
+    public void visit(NodoStmts n){
+    }
+
+     public void visit(NodoElse n){
+    }
+
+     public void visit(NodoDoubleP n){
+    }
+
+     public void visit(NodoAnd n){
+    }
+
+     public void visit(NodoPrint n){
+    }
+
+     public void visit(NodoOr n) {
+    }
+
+    public void visit(Nodo n){
     }
 }
