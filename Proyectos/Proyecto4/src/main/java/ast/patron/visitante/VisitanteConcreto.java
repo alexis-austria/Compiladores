@@ -371,7 +371,10 @@ public class VisitanteConcreto implements Visitor {
     public void visit(NodoStmts n){
     }
 
+    //Metodo para permitir la deteccion de tipos en un else.
      public void visit(NodoElse n){
+        n.getPrimerHijo().accept(this);
+        n.getUltimoHijo().accept(this);
     }
 
      public void visit(NodoDoubleP n){
