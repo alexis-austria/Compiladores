@@ -18,19 +18,19 @@ public interface Visitor
     public void visit(NodoLeq n);
     public void visit(NodoModulo n);
     public void visit(NodoNot n);
-    public void visit(NodoOr n);
+    public void visit(NodoOr n);//Pendiente
     public void visit(NodoPor n);
     public void visit(NodoPotencia n);
-    public void visit(NodoPrint n);
+    public void visit(NodoPrint n);//Pendiente
     public void visit(NodoWhile n);
     public void visit(NodoIf n);
-    public void visit(NodoAnd n);
+    public void visit(NodoAnd n);//Pendiente
     public void visit(NodoDiff n);
     public void visit(NodoDiv n);
     public void visit(NodoDoubleEq n);
-    public void visit(NodoDoubleP n);
-    public void visit(NodoElse n);
-    public void visit(NodoEq n);
+    public void visit(NodoDoubleP n);//Pendiente
+    public void visit(NodoElse n);//Pendiente
+    public void visit(NodoEq n);//Pendiente
     public void visit(NodoIntDiv n);
     public void visit(NodoResta n);
     public void visit(NodoSuma n);

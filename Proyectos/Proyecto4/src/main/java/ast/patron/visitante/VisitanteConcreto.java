@@ -55,4 +55,276 @@ public abstract class VisitanteConcreto implements Visitor {
             System.exit(0);
         }   
     }
+
+     //Metodo para asignarle a un nodo el tipo que tendra.
+    //Si la operacion se efectua entre dos tipos incompatibles se imprime un mensaje de error.
+    public void visit(NodoGrq n) {
+        n.getPrimerHijo().accept(this);
+        n.getUltimoHijo().accept(this); 
+        int tipo = verificadorSistemaTipos.verificadorGrq(n.getPrimerHijo().getType(), n.getUltimoHijo().getType());
+        //Si el tipo no es -1 significa que la operacion esta conformada por tipos correctos.
+        if(tipo != -1){    
+            n.setTipo(tipo);
+        //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
+        }else{
+            System.out.printf("Error de tipos en operacion >= " + regresaTipo(n.getPrimerHijo().getType()) 
+                                                               + regresaTipo(n.getUltimoHijo().getType()));
+            System.exit(0);
+        }   
+    }
+
+     //Metodo para asignarle a un nodo el tipo que tendra.
+    //Si la operacion se efectua entre dos tipos incompatibles se imprime un mensaje de error.
+    public void visit(NodoLe n) {
+        n.getPrimerHijo().accept(this);
+        n.getUltimoHijo().accept(this); 
+        int tipo = verificadorSistemaTipos.verificadorLe(n.getPrimerHijo().getType(), n.getUltimoHijo().getType());
+        //Si el tipo no es -1 significa que la operacion esta conformada por tipos correctos.
+        if(tipo != -1){    
+            n.setTipo(tipo);
+        //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
+        }else{
+            System.out.printf("Error de tipos en operacion < " + regresaTipo(n.getPrimerHijo().getType()) 
+                                                               + regresaTipo(n.getUltimoHijo().getType()));
+            System.exit(0);
+        }   
+    }
+
+     //Metodo para asignarle a un nodo el tipo que tendra.
+    //Si la operacion se efectua entre dos tipos incompatibles se imprime un mensaje de error.
+    public void visit(NodoLeq n) {
+        n.getPrimerHijo().accept(this);
+        n.getUltimoHijo().accept(this); 
+        int tipo = verificadorSistemaTipos.verificadorLeq(n.getPrimerHijo().getType(), n.getUltimoHijo().getType());
+        //Si el tipo no es -1 significa que la operacion esta conformada por tipos correctos.
+        if(tipo != -1){    
+            n.setTipo(tipo);
+        //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
+        }else{
+            System.out.printf("Error de tipos en operacion <= " + regresaTipo(n.getPrimerHijo().getType()) 
+                                                               + regresaTipo(n.getUltimoHijo().getType()));
+            System.exit(0);
+        }   
+    }
+
+     //Metodo para asignarle a un nodo el tipo que tendra.
+    //Si la operacion se efectua entre dos tipos incompatibles se imprime un mensaje de error.
+    public void visit(NodoModulo n) {
+        n.getPrimerHijo().accept(this);
+        n.getUltimoHijo().accept(this); 
+        int tipo = verificadorSistemaTipos.verificadorModulo(n.getPrimerHijo().getType(), n.getUltimoHijo().getType());
+        //Si el tipo no es -1 significa que la operacion esta conformada por tipos correctos.
+        if(tipo != -1){    
+            n.setTipo(tipo);
+        //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
+        }else{
+            System.out.printf("Error de tipos en operacion % " + regresaTipo(n.getPrimerHijo().getType()) 
+                                                               + regresaTipo(n.getUltimoHijo().getType()));
+            System.exit(0);
+        }   
+    }
+
+     //Metodo para asignarle a un nodo el tipo que tendra.
+    //Si la operacion se efectua entre dos tipos incompatibles se imprime un mensaje de error.
+    public void visit(NodoNot n) {
+        n.getPrimerHijo().accept(this);
+        int tipo = verificadorSistemaTipos.verificadorNot(n.getPrimerHijo().getType());
+        //Si el tipo no es -1 significa que la operacion esta conformada por tipos correctos.
+        if(tipo != -1){    
+            n.setTipo(tipo);
+        //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
+        }else{
+            System.out.printf("Error de tipos en operacion not " + regresaTipo(n.getPrimerHijo().getType()));
+            System.exit(0);
+        }   
+    }
+
+     //Metodo para asignarle a un nodo el tipo que tendra.
+    //Si la operacion se efectua entre dos tipos incompatibles se imprime un mensaje de error.
+    public void visit(NodoPor n) {
+        n.getPrimerHijo().accept(this);
+        n.getUltimoHijo().accept(this); 
+        int tipo = verificadorSistemaTipos.verificadorPor(n.getPrimerHijo().getType(), n.getUltimoHijo().getType());
+        //Si el tipo no es -1 significa que la operacion esta conformada por tipos correctos.
+        if(tipo != -1){    
+            n.setTipo(tipo);
+        //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
+        }else{
+            System.out.printf("Error de tipos en operacion * " + regresaTipo(n.getPrimerHijo().getType()) 
+                                                               + regresaTipo(n.getUltimoHijo().getType()));
+            System.exit(0);
+        }   
+    }
+
+     //Metodo para asignarle a un nodo el tipo que tendra.
+    //Si la operacion se efectua entre dos tipos incompatibles se imprime un mensaje de error.
+    public void visit(NodoPotencia n) {
+        n.getPrimerHijo().accept(this);
+        n.getUltimoHijo().accept(this); 
+        int tipo = verificadorSistemaTipos.verificadorPotencia(n.getPrimerHijo().getType(), n.getUltimoHijo().getType());
+        //Si el tipo no es -1 significa que la operacion esta conformada por tipos correctos.
+        if(tipo != -1){    
+            n.setTipo(tipo);
+        //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
+        }else{
+            System.out.printf("Error de tipos en operacion ** " + regresaTipo(n.getPrimerHijo().getType()) 
+                                                               + regresaTipo(n.getUltimoHijo().getType()));
+            System.exit(0);
+        }       
+    }
+
+     //Metodo para asignarle a un nodo el tipo que tendra.
+    //Si la operacion se efectua entre dos tipos incompatibles se imprime un mensaje de error.
+    public void visit(NodoWhile n) {
+        n.getPrimerHijo().accept(this); 
+        int tipo = verificadorSistemaTipos.verificadorWhile(n.getPrimerHijo().getType());
+        //Si el tipo no es -1 significa que la operacion esta conformada por tipos correctos.
+        if(tipo != -1){    
+            n.setTipo(tipo);
+        //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
+        }else{
+            System.out.printf("Error de tipos en operacion while " + regresaTipo(n.getPrimerHijo().getType()));
+            System.exit(0);
+        }   
+    }
+
+     //Metodo para asignarle a un nodo el tipo que tendra.
+    //Si la operacion se efectua entre dos tipos incompatibles se imprime un mensaje de error.
+    public void visit(NodoIf n) {
+        n.getPrimerHijo().accept(this);
+        int tipo = verificadorSistemaTipos.verificadorIf(n.getPrimerHijo().getType());
+        //Si el tipo no es -1 significa que la operacion esta conformada por tipos correctos.
+        if(tipo != -1){    
+            n.setTipo(tipo);
+        //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
+        }else{
+            System.out.printf("Error de tipos en operacion if " + regresaTipo(n.getPrimerHijo().getType()));
+            System.exit(0);
+        }   
+    }
+
+     //Metodo para asignarle a un nodo el tipo que tendra.
+    //Si la operacion se efectua entre dos tipos incompatibles se imprime un mensaje de error.
+    public void visit(NodoDiff n) {
+        n.getPrimerHijo().accept(this);
+        n.getUltimoHijo().accept(this); 
+        int tipo = verificadorSistemaTipos.verificadorDiff(n.getPrimerHijo().getType(), n.getUltimoHijo().getType());
+        //Si el tipo no es -1 significa que la operacion esta conformada por tipos correctos.
+        if(tipo != -1){    
+            n.setTipo(tipo);
+        //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
+        }else{
+            System.out.printf("Error de tipos en operacion != " + regresaTipo(n.getPrimerHijo().getType()) 
+                                                               + regresaTipo(n.getUltimoHijo().getType()));
+            System.exit(0);
+        }   
+    }
+
+     //Metodo para asignarle a un nodo el tipo que tendra.
+    //Si la operacion se efectua entre dos tipos incompatibles se imprime un mensaje de error.
+    public void visit(NodoDiv n) {
+        n.getPrimerHijo().accept(this);
+        n.getUltimoHijo().accept(this); 
+        int tipo = verificadorSistemaTipos.verificadorDiv(n.getPrimerHijo().getType(), n.getUltimoHijo().getType());
+        //Si el tipo no es -1 significa que la operacion esta conformada por tipos correctos.
+        if(tipo != -1){    
+            n.setTipo(tipo);
+        //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
+        }else{
+            System.out.printf("Error de tipos en operacion / " + regresaTipo(n.getPrimerHijo().getType()) 
+                                                               + regresaTipo(n.getUltimoHijo().getType()));
+            System.exit(0);
+        }   
+    }
+
+     //Metodo para asignarle a un nodo el tipo que tendra.
+    //Si la operacion se efectua entre dos tipos incompatibles se imprime un mensaje de error.
+    public void visit(NodoDoubleEq n) {
+        n.getPrimerHijo().accept(this);
+        n.getUltimoHijo().accept(this); 
+        int tipo = verificadorSistemaTipos.verificadorDoubleEq(n.getPrimerHijo().getType(), n.getUltimoHijo().getType());
+        //Si el tipo no es -1 significa que la operacion esta conformada por tipos correctos.
+        if(tipo != -1){    
+            n.setTipo(tipo);
+        //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
+        }else{
+            System.out.printf("Error de tipos en operacion == " + regresaTipo(n.getPrimerHijo().getType()) 
+                                                               + regresaTipo(n.getUltimoHijo().getType()));
+            System.exit(0);
+        }   
+    }
+
+     //Metodo para asignarle a un nodo el tipo que tendra.
+    //Si la operacion se efectua entre dos tipos incompatibles se imprime un mensaje de error.
+    public void visit(NodoIntDiv n) {
+        n.getPrimerHijo().accept(this);
+        n.getUltimoHijo().accept(this); 
+        int tipo = verificadorSistemaTipos.verificadorDivInt(n.getPrimerHijo().getType(), n.getUltimoHijo().getType());
+        //Si el tipo no es -1 significa que la operacion esta conformada por tipos correctos.
+        if(tipo != -1){    
+            n.setTipo(tipo);
+        //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
+        }else{
+            System.out.printf("Error de tipos en operacion // " + regresaTipo(n.getPrimerHijo().getType()) 
+                                                               + regresaTipo(n.getUltimoHijo().getType()));
+            System.exit(0);
+        }   
+    }
+
+     //Metodo para asignarle a un nodo el tipo que tendra.
+    //Si la operacion se efectua entre dos tipos incompatibles se imprime un mensaje de error.
+    public void visit(NodoResta n) {
+        n.getPrimerHijo().accept(this);
+        n.getUltimoHijo().accept(this); 
+        int tipo = verificadorSistemaTipos.verificadorResta(n.getPrimerHijo().getType(), n.getUltimoHijo().getType());
+        //Si el tipo no es -1 significa que la operacion esta conformada por tipos correctos.
+        if(tipo != -1){    
+            n.setTipo(tipo);
+        //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
+        }else{
+            System.out.printf("Error de tipos en operacion - " + regresaTipo(n.getPrimerHijo().getType()) 
+                                                               + regresaTipo(n.getUltimoHijo().getType()));
+            System.exit(0);
+        }   
+    }
+
+     //Metodo para asignarle a un nodo el tipo que tendra.
+    //Si la operacion se efectua entre dos tipos incompatibles se imprime un mensaje de error.
+    public void visit(NodoSuma n) {
+        n.getPrimerHijo().accept(this);
+        n.getUltimoHijo().accept(this); 
+        int tipo = verificadorSistemaTipos.verificadorSuma(n.getPrimerHijo().getType(), n.getUltimoHijo().getType());
+        //Si el tipo no es -1 significa que la operacion esta conformada por tipos correctos.
+        if(tipo != -1){    
+            n.setTipo(tipo);
+        //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
+        }else{
+            System.out.printf("Error de tipos en operacion > " + regresaTipo(n.getPrimerHijo().getType()) 
+                                                               + regresaTipo(n.getUltimoHijo().getType()));
+            System.exit(0);
+        }   
+    }
+
+    // Sup que sólo tiene que visitar a todos y no tiene tipo
+    public void visit(Compuesto n) {
+        for(Nodo nodo : n.getHijos().getAll()){
+            nodo.accept(this);
+        }
+    }
+
+    public void visit(IntHoja n) {
+        n.setTipo(ENTERO);
+    }
+
+     public void visit(CadenaHoja n) {
+        n.setTipo(CADENA);
+    }
+
+     public void visit(BooleanoHoja n) {
+        n.setTipo(BOOLEANO);
+    }
+
+     public void visit(RealHoja n) {
+        n.setTipo(REAL);
+    }
 }

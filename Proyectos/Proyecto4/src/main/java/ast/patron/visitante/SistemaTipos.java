@@ -57,9 +57,9 @@ public class SistemaTipos {
     //El cuarto renglon y la cuarta columna representan las cadenas.
     int[][] doubleEq= new int[][]{
                 {ERROR,ERROR,ERROR,ERROR},
-                {ERROR, BOOLEANO, BOOLEANO, ERROR},
-                {ERROR, BOOLEANO, BOOLEANO, ERROR},
-                {ERROR, ERROR, ERROR, ERROR}};
+                {ERROR, BOOLEANO, ERROR, ERROR},
+                {ERROR, ERROR, BOOLEANO, ERROR},
+                {ERROR, ERROR, ERROR, BOOLEANO}};
 
     //Funcion para calcular la entrada en la matriz para la operacion doubleEq.
     public int verificadorDoubleEq(int i, int j) {
@@ -170,7 +170,6 @@ public class SistemaTipos {
         return modulo[i][j];
     }
 
-    //En el not se regresara un booleano para todos. 
     int[] not = new int[]{BOOLEANO,ENTERO,REAL,ERROR};
 
     //Funcion para calcular la entrada en la matriz para la operacion not.
