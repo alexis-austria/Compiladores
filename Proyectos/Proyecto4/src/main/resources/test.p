@@ -1,17 +1,9 @@
 # FizzBuzz
-indice = 1
-while indice < 31:
-   otro = True
-   if indice % 3 == 0:
-      print "fizz"
-      otro = False
-
-   if indice %5 == 0:
-      print "buzz"
-      otro = False
-
-   if otro:
-      print indice
-
-   indice = indice + 1
-
+primero = 3
+while(True):
+    primero = 3
+if(True):
+   primero = 4 + 2
+else:
+    primero = 5 + 3
+segundo = "cad" * 3

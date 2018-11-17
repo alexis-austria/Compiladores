@@ -32,6 +32,7 @@ ast/patron/compuesto/NodoAnd.class
 ast/patron/compuesto/NodoDiv.class
 ast/Parser.class
 ast/patron/compuesto/BooleanoHoja.class
+ast/patron/visitante/VisitanteConcreto.class
 ast/patron/compuesto/NodoIntDiv.class
 ast/patron/compuesto/NodoIf.class
 ast/patron/visitante/Visitor.class

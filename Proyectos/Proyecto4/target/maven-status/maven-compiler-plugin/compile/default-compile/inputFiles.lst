@@ -17,6 +17,7 @@
 /home/pablo/Escritorio/Proyecto4/Compiladores-master/Proyectos/Proyecto4/src/main/java/ast/patron/compuesto/NodoEq.java
 /home/pablo/Escritorio/Proyecto4/Compiladores-master/Proyectos/Proyecto4/src/main/java/ast/patron/compuesto/NodoPor.java
 /home/pablo/Escritorio/Proyecto4/Compiladores-master/Proyectos/Proyecto4/src/main/java/ast/patron/compuesto/Nodo.java
+/home/pablo/Escritorio/Proyecto4/Compiladores-master/Proyectos/Proyecto4/src/main/java/ast/patron/visitante/VisitanteConcreto.java
 /home/pablo/Escritorio/Proyecto4/Compiladores-master/Proyectos/Proyecto4/src/main/java/ast/patron/compuesto/NodoSuma.java
 /home/pablo/Escritorio/Proyecto4/Compiladores-master/Proyectos/Proyecto4/src/main/java/ast/patron/compuesto/NodoWhile.java
 /home/pablo/Escritorio/Proyecto4/Compiladores-master/Proyectos/Proyecto4/src/main/java/ast/patron/visitante/SistemaTipos.java
