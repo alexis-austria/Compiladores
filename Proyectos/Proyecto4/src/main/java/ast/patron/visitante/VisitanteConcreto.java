@@ -336,7 +336,13 @@ public class VisitanteConcreto implements Visitor {
         String nombre = n.getPrimerHijo().getNombre();  
         //Verificamos si existe en nuetra tabla de simbolos.
         if (tablaDeSimbolos.containsKey(nombre)){            
-            n.setTipo(tablaDeSimbolos.get(nombre));
+            //Si el tipo nuevo es diferente al antiguo manda un error.
+            if(tablaDeSimbolos.get(nombre) != n.getUltimoHijo().getType()){
+                System.out.println("El nuevo tipo no es del mismo tipo al antiguo");
+                System.exit(0);
+            }else{
+                n.setTipo(tablaDeSimbolos.get(nombre));
+            }
         //En caso de tener el mismo tipo lo guardamos en la tabla sin priblemas.    
         }else{  
             tablaDeSimbolos.put(nombre, n.getUltimoHijo().getType());
