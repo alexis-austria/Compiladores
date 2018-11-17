@@ -33,6 +33,9 @@ public class SistemaTipos {
         return diff[i][j];
     }
 
+    
+    
+
     //Tabla para definir si los tipos son compatibles en el divInt.
     //El primer renglon y la primera columna representan los booleanos.
     //El segundo renglon y la segunda columna representan los Enteros.
@@ -104,6 +107,14 @@ public class SistemaTipos {
     //Funcion para calcular la entrada en la matriz para la operacion if.
     public int verificadorIf(int i) {
         return iff [i];
+    }
+
+    //En el print puede tener de todos los tipos.
+    int[] print = new int[]{BOOLEANO,ENTERO,REAL,CADENA};
+
+    //Funcion para calcular la entrada en la matriz para la operacion if.
+    public int verificadorPrint(int i) {
+        return print [i];
     }
 
     //Tabla para definir si los tipos son compatibles en el div.

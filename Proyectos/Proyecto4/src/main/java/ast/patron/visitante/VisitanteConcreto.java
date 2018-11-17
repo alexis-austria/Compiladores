@@ -50,7 +50,7 @@ public class VisitanteConcreto implements Visitor {
             n.setTipo(tipo);
         //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
         }else{
-            System.out.printf("Error de tipos en operacion > " + regresaTipo(n.getPrimerHijo().getType()) 
+            System.out.printf("Error de tipos en operacion > " + "\n" + regresaTipo(n.getPrimerHijo().getType()) + " No se puede operar con "
                                                                + regresaTipo(n.getUltimoHijo().getType()));
             System.exit(0);
         }   
@@ -67,7 +67,7 @@ public class VisitanteConcreto implements Visitor {
             n.setTipo(tipo);
         //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
         }else{
-            System.out.printf("Error de tipos en operacion >= " + regresaTipo(n.getPrimerHijo().getType()) 
+            System.out.printf("Error de tipos en operacion >= " + "\n" + regresaTipo(n.getPrimerHijo().getType()) + " No se puede operar con "
                                                                + regresaTipo(n.getUltimoHijo().getType()));
             System.exit(0);
         }   
@@ -84,7 +84,7 @@ public class VisitanteConcreto implements Visitor {
             n.setTipo(tipo);
         //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
         }else{
-            System.out.printf("Error de tipos en operacion < " + regresaTipo(n.getPrimerHijo().getType()) 
+            System.out.printf("Error de tipos en operacion < " + "\n" + regresaTipo(n.getPrimerHijo().getType()) + " No se puede operar con "
                                                                + regresaTipo(n.getUltimoHijo().getType()));
             System.exit(0);
         }   
@@ -101,7 +101,7 @@ public class VisitanteConcreto implements Visitor {
             n.setTipo(tipo);
         //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
         }else{
-            System.out.printf("Error de tipos en operacion <= " + regresaTipo(n.getPrimerHijo().getType()) 
+            System.out.printf("Error de tipos en operacion <= " + "\n" + regresaTipo(n.getPrimerHijo().getType()) + " No se puede operar con "
                                                                + regresaTipo(n.getUltimoHijo().getType()));
             System.exit(0);
         }   
@@ -118,7 +118,7 @@ public class VisitanteConcreto implements Visitor {
             n.setTipo(tipo);
         //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
         }else{
-            System.out.printf("Error de tipos en operacion % " + regresaTipo(n.getPrimerHijo().getType()) 
+            System.out.printf("Error de tipos en operacion % " + "\n" + regresaTipo(n.getPrimerHijo().getType()) + " No se puede operar con "
                                                                + regresaTipo(n.getUltimoHijo().getType()));
             System.exit(0);
         }   
@@ -134,7 +134,7 @@ public class VisitanteConcreto implements Visitor {
             n.setTipo(tipo);
         //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
         }else{
-            System.out.printf("Error de tipos en operacion not " + regresaTipo(n.getPrimerHijo().getType()));
+            System.out.printf("Error de tipos en operacion not " + "\n" + " No se puede operar con " + regresaTipo(n.getPrimerHijo().getType()));
             System.exit(0);
         }   
     }
@@ -150,7 +150,7 @@ public class VisitanteConcreto implements Visitor {
             n.setTipo(tipo);
         //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
         }else{
-            System.out.printf("Error de tipos en operacion * " + regresaTipo(n.getPrimerHijo().getType()) 
+            System.out.printf("Error de tipos en operacion * " + "\n" + regresaTipo(n.getPrimerHijo().getType()) + " No se puede operar con "
                                                                + regresaTipo(n.getUltimoHijo().getType()));
             System.exit(0);
         }   
@@ -167,7 +167,7 @@ public class VisitanteConcreto implements Visitor {
             n.setTipo(tipo);
         //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
         }else{
-            System.out.printf("Error de tipos en operacion ** " + regresaTipo(n.getPrimerHijo().getType()) 
+            System.out.printf("Error de tipos en operacion ** " + "\n" + regresaTipo(n.getPrimerHijo().getType()) + " No se puede operar con "
                                                                + regresaTipo(n.getUltimoHijo().getType()));
             System.exit(0);
         }       
@@ -177,28 +177,35 @@ public class VisitanteConcreto implements Visitor {
     //Si la operacion se efectua entre dos tipos incompatibles se imprime un mensaje de error.
     public void visit(NodoWhile n) {
         n.getPrimerHijo().accept(this); 
+        n.getUltimoHijo().accept(this); 
         int tipo = verificadorSistemaTipos.verificadorWhile(n.getPrimerHijo().getType());
         //Si el tipo no es -1 significa que la operacion esta conformada por tipos correctos.
         if(tipo != -1){    
             n.setTipo(tipo);
         //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
         }else{
-            System.out.printf("Error de tipos en operacion while " + regresaTipo(n.getPrimerHijo().getType()));
+            System.out.printf("Error de tipos en operacion while " + "\n" + " No se puede operar con " +  regresaTipo(n.getPrimerHijo().getType()));
             System.exit(0);
         }   
     }
 
-     //Metodo para asignarle a un nodo el tipo que tendra.
-    //Si la operacion se efectua entre dos tipos incompatibles se imprime un mensaje de error.
+    //Metodo para el nodo if, en caso de que en el cuerpo del if no haya un booleano manda un mensaje de error.
     public void visit(NodoIf n) {
-        n.getPrimerHijo().accept(this);
-        int tipo = verificadorSistemaTipos.verificadorIf(n.getPrimerHijo().getType());
+        int numeroHijos = n.obtenNumeroHijos();
+        LinkedList<Nodo> hijos = n.getTotal();
+        hijos.get(0).accept(this);
+        hijos.get(1).accept(this);
+        //En caso de que sean 3 hijos aplicamos el metodo accept para los tres.
+        if (numeroHijos == 3) {
+            hijos.get(2).accept(this);
+        }
+        int tipo = verificadorSistemaTipos.verificadorWhile(n.getPrimerHijo().getType());
         //Si el tipo no es -1 significa que la operacion esta conformada por tipos correctos.
         if(tipo != -1){    
             n.setTipo(tipo);
         //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
         }else{
-            System.out.printf("Error de tipos en operacion if " + regresaTipo(n.getPrimerHijo().getType()));
+            System.out.printf("Error de tipos en operacion if " + "\n" + " No se puede evaluar el if con en el cuerpo" +  regresaTipo(n.getPrimerHijo().getType()));
             System.exit(0);
         }   
     }
@@ -214,7 +221,7 @@ public class VisitanteConcreto implements Visitor {
             n.setTipo(tipo);
         //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
         }else{
-            System.out.printf("Error de tipos en operacion != " + regresaTipo(n.getPrimerHijo().getType()) 
+            System.out.printf("Error de tipos en operacion != " + "\n" + regresaTipo(n.getPrimerHijo().getType()) + " No se puede operar con "
                                                                + regresaTipo(n.getUltimoHijo().getType()));
             System.exit(0);
         }   
@@ -231,7 +238,7 @@ public class VisitanteConcreto implements Visitor {
             n.setTipo(tipo);
         //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
         }else{
-            System.out.printf("Error de tipos en operacion / " + regresaTipo(n.getPrimerHijo().getType()) 
+            System.out.printf("Error de tipos en operacion / " + "\n" + regresaTipo(n.getPrimerHijo().getType()) + " No se puede operar con "
                                                                + regresaTipo(n.getUltimoHijo().getType()));
             System.exit(0);
         }   
@@ -248,7 +255,7 @@ public class VisitanteConcreto implements Visitor {
             n.setTipo(tipo);
         //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
         }else{
-            System.out.printf("Error de tipos en operacion == " + regresaTipo(n.getPrimerHijo().getType()) 
+            System.out.printf("Error de tipos en operacion == " + "\n" + regresaTipo(n.getPrimerHijo().getType()) + " No se puede operar con "
                                                                + regresaTipo(n.getUltimoHijo().getType()));
             System.exit(0);
         }   
@@ -265,7 +272,7 @@ public class VisitanteConcreto implements Visitor {
             n.setTipo(tipo);
         //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
         }else{
-            System.out.printf("Error de tipos en operacion // " + regresaTipo(n.getPrimerHijo().getType()) 
+            System.out.println("Error de tipos en operacion // " + "\n" + regresaTipo(n.getPrimerHijo().getType()) + " No se puede operar con "
                                                                + regresaTipo(n.getUltimoHijo().getType()));
             System.exit(0);
         }   
@@ -282,7 +289,7 @@ public class VisitanteConcreto implements Visitor {
             n.setTipo(tipo);
         //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
         }else{
-            System.out.printf("Error de tipos en operacion - " + regresaTipo(n.getPrimerHijo().getType()) 
+            System.out.printf("Error de tipos en operacion - " + "\n" + regresaTipo(n.getPrimerHijo().getType()) + " No se puede operar con "
                                                                + regresaTipo(n.getUltimoHijo().getType()));
             System.exit(0);
         }   
@@ -299,7 +306,7 @@ public class VisitanteConcreto implements Visitor {
             n.setTipo(tipo);
         //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
         }else{
-            System.out.printf("Error de tipos en operacion > " + regresaTipo(n.getPrimerHijo().getType()) 
+            System.out.printf("Error de tipos en operacion + " + "\n" + regresaTipo(n.getPrimerHijo().getType()) + " No se puede operar con "
                                                                + regresaTipo(n.getUltimoHijo().getType()));
             System.exit(0);
         }   
@@ -312,47 +319,45 @@ public class VisitanteConcreto implements Visitor {
         }
     }
 
+    //Metodo que verificara que un identificador tenga un valor que lo defina.
     public void visit(IdentificadorHoja n){
         if( !tablaDeSimbolos.containsKey(n.getNombre())){
-            System.err.println("\n\nLa variable " + n.getNombre() + " no tiene un valor definido");
-            //System.out.println(tablaSim.keySet());
-            
+            System.err.println("\n\nLa variable " + n.getNombre() + " no tiene un valor definido");   
             System.exit(0);
         }else{
             n.setTipo(tablaDeSimbolos.get(n.getNombre()));
         }
     }
 
+    //Metodo para las asignaciones.
+    //Se encargara de actualizar los valores de los identificadores en caso de cambios.
     public void visit(NodoEq n){
         n.getUltimoHijo().accept(this);
-        String name = n.getPrimerHijo().getNombre();  
-        // Verifica en la TS si existe
-        if (tablaDeSimbolos.containsKey(name)){            
-            // Verifica si el tipo que tenía es igual al nuevo
-            if(tablaDeSimbolos.get(name) != n.getUltimoHijo().getType()){
-                System.out.println("El nuevo tipo no es del mismo tipo al antiguo");
-            }else{
-                n.setTipo(tablaDeSimbolos.get(name));
-            }
+        String nombre = n.getPrimerHijo().getNombre();  
+        //Verificamos si existe en nuetra tabla de simbolos.
+        if (tablaDeSimbolos.containsKey(nombre)){            
+            n.setTipo(tablaDeSimbolos.get(nombre));
+        //En caso de tener el mismo tipo lo guardamos en la tabla sin priblemas.    
         }else{  
-            tablaDeSimbolos.put(name, n.getUltimoHijo().getType());
+            tablaDeSimbolos.put(nombre, n.getUltimoHijo().getType());
         }
         
         n.getPrimerHijo().accept(this);
     }
 
+    //Como es una hoja solo se le asigna su tipo.
     public void visit(IntHoja n) {
         n.setTipo(ENTERO);
     }
-
+    //Como es una hoja solo se le asigna su tipo.
      public void visit(CadenaHoja n) {
         n.setTipo(CADENA);
     }
-
+    //Como es una hoja solo se le asigna su tipo.
      public void visit(BooleanoHoja n) {
         n.setTipo(BOOLEANO);
     }
-
+    //Como es una hoja solo se le asigna su tipo.
      public void visit(RealHoja n) {
         n.setTipo(REAL);
     }
@@ -369,7 +374,19 @@ public class VisitanteConcreto implements Visitor {
      public void visit(NodoAnd n){
     }
 
+    //En el print solo se le asignara el tipo que tiene.
      public void visit(NodoPrint n){
+        n.getPrimerHijo().accept(this);
+        int tipo = verificadorSistemaTipos.verificadorPrint(n.getPrimerHijo().getType());
+        //Si el tipo no es -1 significa que la operacion esta conformada por tipos correctos.
+        if(tipo != -1){    
+            n.setTipo(tipo);
+        //Si el tipo es -1 significa que uno o ambos tipos son incorrectos para la operacion.
+        }else{
+            System.out.printf("Error de tipos en operacion print " + "\n" + " No se puede imprimir con " +  regresaTipo(n.getPrimerHijo().getType()));
+            System.exit(0);
+        }   
+
     }
 
      public void visit(NodoOr n) {
