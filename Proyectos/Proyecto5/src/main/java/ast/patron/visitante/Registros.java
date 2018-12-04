@@ -10,8 +10,7 @@ public class Registros{
 
     // Todos los registros enteros disponibles
     String[] E_registros = {"$t0", "$t1", "$t2", "$t3", "$t4", "$t5", "$t6", "$t7", "$t8" ,"$t9"};
-    // Todos los registros flotantes disponibles
-    String[] F_registros = {"$f4", "$f5", "$f6", "$f7", "$f8", "$f9" ,"$f10"};
+    
 
     public void setObjetivo(int o){
         objetivoEntero = o % E_registros.length;
@@ -24,7 +23,7 @@ public class Registros{
 
     //Regresamos el registro que se va a utilizar.
     public String getObjetivo(){
-        return E_registros[objetivoEntero];;
+        return E_registros[objetivoEntero];
     }
 
     /* Regresa los n registos siguientes "disponibles" */
