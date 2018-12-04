@@ -11,11 +11,13 @@ public class Compilador{
     Nodo raízAST;
     VisitorPrint v_print;
     VisitanteConcreto v_concreto;
+    VisitanteGenerador v_generador;
 
     Compilador(Reader fuente){
         parser = new Parser(fuente);
         v_print = new VisitorPrint();
         v_concreto = new VisitanteConcreto();
+        v_generador = new VisitanteGenerador();
     }
 
     public void ConstruyeAST(boolean debug){
@@ -25,7 +27,7 @@ public class Compilador{
     }
 
     public void imprimeAST(){
-        parser.raíz.accept(v_concreto);
+        parser.raíz.accept(v_generador);
     }
 
     public static void main(String[] args){
