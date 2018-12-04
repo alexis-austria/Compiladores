@@ -188,7 +188,19 @@ public class VisitanteGenerador implements Visitor {
         
     }
 
+    //Generador de codigo para el print.
     public void visit(NodoPrint n){
+        Nodo hi = n.getPrimerHijo();
+        String objetivo = reg.getObjetivo();
+        String[] siguientes = reg.getNsiguientes(2);
+        // Genero el código del hijo.
+        reg.setObjetivo(siguientes[0]);
+        hi.accept(this);
+        if(hi.getNombre() != null)//Si queremos imprimir algo ya definido lo cargamos.
+            System.out.println("lw " + objetivo + ", " + hi.getNombre());
+        String opcode ="li    " + "$v0, " + "4" + "\n";//Codigo de llamada al sistema para imprimir.
+        opcode = opcode + "syscall" + "\n";
+        System.out.println(opcode);
         
     }
 
